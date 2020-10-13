@@ -11,17 +11,15 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("How many numbers do you want to add in array?");
-        int countOfNumbers = scanner.nextInt();
+        int numbersOfElements = scanner.nextInt();
         scanner.nextLine();
 
-        if (countOfNumbers > 0) {
+        if (numbersOfElements > 0) {
             ArrayList<Integer> array = new ArrayList<>();
 
-            for (int i = 0; i < countOfNumbers; i++) {
+            for (int i = 0; i < numbersOfElements; i++) {
                 array.add((int) (Math.random() * 1000));
             }
-
-            Collections.sort(array);
 
             for (Integer integer : array) System.out.println(integer);
 
