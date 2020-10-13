@@ -6,6 +6,7 @@ public class InputValue {
 
 	private static final Scanner scanner = new Scanner(System.in);
 	private int numberOfElements;
+	private int inputValue;
 
 
 	public int[] getIntegers() {
@@ -13,8 +14,11 @@ public class InputValue {
 		int[] inputIntegers = new int[numberOfElements];
 
 		for (int i = 0; i < inputIntegers.length; i++) {
+
 			System.out.println("Enter " + (i + 1) + " element:");
-			inputIntegers[i] = scanner.nextInt();
+			if (isInputANumber())
+				inputIntegers[i] = inputValue;
+			else i = i - 1;
 		}
 		scanner.close();
 		return inputIntegers;
@@ -24,15 +28,23 @@ public class InputValue {
 		System.out.println("How many elements do you want to add?");
 
 		do {
-			try {
-				numberOfElements = Integer.parseInt(scanner.next());
-			} catch (Exception e) {
-				System.out.println("Try one more time please");
-			}
+			if (isInputANumber())
+				numberOfElements = inputValue;
 			if (numberOfElements > 0)
 				return numberOfElements;
 			else
 				System.out.println("Invalid value");
+		} while (true);
+	}
+
+	private boolean isInputANumber() {
+		do {
+			try {
+				inputValue = Integer.parseInt(scanner.next());
+				return true;
+			} catch (Exception e) {
+				System.out.println("Try one more time please");
+			}
 		} while (true);
 	}
 }
