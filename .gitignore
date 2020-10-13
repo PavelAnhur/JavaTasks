@@ -9,5 +9,6 @@
 *.zip
 *.tar.gz
 *.rar
+*.iml
 
 .idea/
