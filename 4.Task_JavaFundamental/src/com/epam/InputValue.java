@@ -18,7 +18,6 @@ public class InputValue {
 			System.out.println("Enter " + (i + 1) + " element:");
 			if (isInputANumber())
 				inputIntegers[i] = inputValue;
-			else i = i - 1;
 		}
 		scanner.close();
 		return inputIntegers;
