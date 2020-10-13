@@ -1,6 +1,6 @@
-package com.company;
+package com.epam;
 
-public class Function {
+public class SumAndMultFunction {
 
 	public void getSumOfElements(int[] array) {
 
