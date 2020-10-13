@@ -1,7 +1,6 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -11,17 +10,16 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("How many numbers do you want to add in array?");
-        int countOfNumbers = scanner.nextInt();
-        scanner.nextLine();
+        int numberOfElements = scanner.nextInt();
 
-        if (countOfNumbers > 0) {
+
+        if (numberOfElements > 0) {
+
             ArrayList<Integer> array = new ArrayList<>();
 
-            for (int i = 0; i < countOfNumbers; i++) {
+            for (int i = 0; i < numberOfElements; i++) {
                 array.add((int) (Math.random() * 1000));
             }
-
-            Collections.sort(array);
 
             for (Integer integer : array) System.out.println(integer);
 

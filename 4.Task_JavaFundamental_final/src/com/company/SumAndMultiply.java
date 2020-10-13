@@ -1,8 +1,8 @@
 package com.company;
 
-public class Function {
+public class SumAndMultiply {
 
-	public void getSumOfElements(int[] array) {
+	public void sumOfElements(int[] array) {
 
 		int sumOfElements = 0;
 		for (int i=0; i < array.length; i++) {
@@ -11,7 +11,7 @@ public class Function {
 		System.out.println("Sum of " + array.length + " elements = " + sumOfElements);
 	}
 
-	public void getMultiplyOfElements(int[] array) {
+	public void multiplyOfElements(int[] array) {
 
 		long multiplyOfElements =1;
 		for (int i = 0; i < array.length; i++) {
