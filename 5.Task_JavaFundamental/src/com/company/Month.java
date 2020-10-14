@@ -1,8 +1,7 @@
 package com.company;
 
 public class Month {
-	private String month;
-	private int numberOfMonth;
+	private final int numberOfMonth;
 
 	public Month(int numberOfMonth) {
 		this.numberOfMonth = numberOfMonth;
@@ -15,43 +14,30 @@ public class Month {
 	public String getMonth(int monthNumber) {
 		switch (monthNumber) {
 			case 1:
-				month = "January";
-				break;
+				return "January";
 			case 2:
-				month = "February";
-				break;
+				return "February";
 			case 3:
-				month = "March";
-				break;
+				return "March";
 			case 4:
-				month = "April";
-				break;
+				return "April";
 			case 5:
-				month = "May";
-				break;
+				return "May";
 			case 6:
-				month = "June";
-				break;
+				return  "June";
 			case 7:
-				month = "July";
-				break;
+				return  "July";
 			case 8:
-				month = "August";
-				break;
+				return "August";
 			case 9:
-				month = "September";
-				break;
+				return "September";
 			case 10:
-				month = "October";
-				break;
+				return "October";
 			case 11:
-				month = "November";
-				break;
+				return "November";
 			default:
-				month = "December";
-				break;
+				return "December";
 
 		}
-		return month;
 	}
 }
