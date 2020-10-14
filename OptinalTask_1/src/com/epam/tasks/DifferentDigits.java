@@ -10,27 +10,39 @@ public class DifferentDigits {
 		this.numbersFromNumbersClass = numbers;
 	}
 
-	public void howManySeparateDigitsAreEqual(long[] numbers) {
+	public void numberWithLessValueOfDifferentDigits(long[] numbers) {
 		String[] copyOfNumbersInString = new String[n];
-
 		for (int i = 0; i < numbers.length; i++) {
 			copyOfNumbersInString[i] = String.valueOf((numbers[i]));
 		}
-		int numberWithEqualDigits = Integer.MAX_VALUE;
-		int minValueOfDifferentDigits = 0;
+
+		int[] differentDigitsInNumber = new int[n];
 		for (int i = copyOfNumbersInString.length - 1; i >= 0; i--) {
+
 			int equalDigit = 0;
+			int counterOfDigits = 0;
+
 			for (int j = 0; j < copyOfNumbersInString[i].length(); j++) {
-				if (copyOfNumbersInString[i].charAt(i) != copyOfNumbersInString[i].charAt(j)) {
+				counterOfDigits++;
+				if (copyOfNumbersInString[i].charAt(i) == copyOfNumbersInString[i].charAt(j)) {
 					equalDigit++;
 				}
 			}
-			if (equalDigit <= minValueOfDifferentDigits) {
-				minValueOfDifferentDigits = equalDigit;
-				numberWithEqualDigits = Integer.parseInt(copyOfNumbersInString[i]);
+			differentDigitsInNumber[i] = counterOfDigits - equalDigit;
+		}
+		int index = 0;
+		int minValueOfDifferentDigits = 0;
+		for (int i = differentDigitsInNumber.length - 1; i >= 0; i--) {
+			if (i == differentDigitsInNumber.length - 1) {
+				minValueOfDifferentDigits = differentDigitsInNumber[i];
+				index = i;
+			} else if (minValueOfDifferentDigits >= differentDigitsInNumber[i]) {
+				minValueOfDifferentDigits = differentDigitsInNumber[i];
+				index = i;
 			}
 		}
-		System.out.println("Number with less different digits " + numberWithEqualDigits);
+		System.out.println("Number with less different digits " + copyOfNumbersInString[index] +
+				" with " + minValueOfDifferentDigits + " different digits");
 	}
 
 }
