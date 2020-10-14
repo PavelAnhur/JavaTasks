@@ -44,4 +44,27 @@ public class DifferentDigits {
 		System.out.println("Number with less different digits " + copyOfNumbersInString[index]);
 	}
 
+	public long getNumberWithDifferentDigitsOnly(long[] numbers) {
+		long[] copyOfNumbers = new long[n];
+		for (int i = 0; i < copyOfNumbers.length; i++) {
+			copyOfNumbers[i] = numbers[i];
+		}
+
+		for (int i = 0; i < copyOfNumbers.length; i++) {
+			int digit, previousDigit = (int) (copyOfNumbers[i] % 10);
+
+			while (copyOfNumbers[i] > 0) {
+				copyOfNumbers[i] /= 10;
+				digit = (int) (copyOfNumbers[i] % 10);
+				if (previousDigit == digit) {
+					break;
+				}
+				previousDigit = digit;
+			}
+			if (copyOfNumbers[i] == 0) {
+				return numbers[i];
+			}
+		}
+		return -1;
+	}
 }

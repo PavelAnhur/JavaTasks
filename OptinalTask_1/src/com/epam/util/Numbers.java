@@ -44,11 +44,9 @@ public class Numbers {
 
 	public void outputNumbersFromConsoleInput() {
 		System.out.println("Array of longs from console input");
-		for (int i = 0; i < numbers.length; i++) {
-			System.out.print(numbers[i] + " ");
+		for (long number : numbers) {
+			System.out.print(number + " ");
 		}
 		System.out.println();
 	}
-
-
 }

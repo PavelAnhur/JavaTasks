@@ -21,15 +21,15 @@ public class OddEvenDigit {
 		long[] copyOfNumbers = Arrays.stream(numbersFromNumbersClass, 0, n).toArray();
 
 		for (int i = 0; i < copyOfNumbers.length; i++) {
-			long Digit;
+			long digit;
 			int counterOfDigits = 0;
 			int counterOfEvenDigits = 0;
 			int counterOfOddDigits = 0;
 
 			while (Math.abs(copyOfNumbers[i]) > 0) {
 				counterOfDigits++;
-				Digit = copyOfNumbers[i] % 2;
-				if (Digit == 0) {
+				digit = copyOfNumbers[i] % 2;
+				if (digit == 0) {
 					counterOfEvenDigits++;
 				} else {
 					counterOfOddDigits++;

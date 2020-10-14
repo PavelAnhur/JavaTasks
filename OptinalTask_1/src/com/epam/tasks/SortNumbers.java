@@ -32,6 +32,4 @@ public class SortNumbers {
 		for (int i = numbersFromMinToMax.size() - 1; i >= 0; i--)
 			System.out.println(numbersFromMinToMax.get(i));
 	}
-
-
 }
