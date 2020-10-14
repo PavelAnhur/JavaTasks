@@ -19,7 +19,7 @@ public class LongestNumber extends InputNumbers {
 
 		for (int i = 0; i < copyOfInputNumbersArray.length; i++) {
 			int digit = 0;
-			while (copyOfInputNumbersArray[i] > 0) {
+			while (Math.abs(copyOfInputNumbersArray[i]) > 0) {
 				digit++;
 				copyOfInputNumbersArray[i] /= 10;
 			}
