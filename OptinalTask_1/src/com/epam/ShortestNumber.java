@@ -15,8 +15,7 @@ public class ShortestNumber extends InputNumbers {
 	}
 
 	public long getShortestNumber() {
-		long[] copyOfInputNumbersArray = new long[n];
-		//create new array with elements from InputNumbers
+		long[] copyOfInputNumbersArray = new long[n];  //create new array with elements from InputNumbers
 		Arrays.setAll(copyOfInputNumbersArray, i -> numbersFromInputNumbersClass[i]);
 
 		for (int i = 0; i < copyOfInputNumbersArray.length; i++) {

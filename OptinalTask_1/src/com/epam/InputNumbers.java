@@ -14,6 +14,7 @@ public class InputNumbers {
 		this.numbersFromInputNumbersClass = new long[n];
 	}
 
+
 	public void setNumbersFromConsoleInput() {
 
 		for (int i = 0; i < numbersFromInputNumbersClass.length; i++) {
