@@ -17,7 +17,7 @@ public class DifferentDigits {
 		}
 
 		int[] differentDigitsInNumber = new int[n];
-		for (int i = copyOfNumbersInString.length - 1; i >= 0; i--) {
+		for (int i = copyOfNumbersInString.length - 1; i > 0; i--) {
 
 			int equalDigit = 0;
 			int counterOfDigits = 0;
@@ -32,7 +32,7 @@ public class DifferentDigits {
 		}
 		int index = 0;
 		int minValueOfDifferentDigits = 0;
-		for (int i = differentDigitsInNumber.length - 1; i >= 0; i--) {
+		for (int i = differentDigitsInNumber.length - 1; i > 0; i--) {
 			if (i == differentDigitsInNumber.length - 1) {
 				minValueOfDifferentDigits = differentDigitsInNumber[i];
 				index = i;
@@ -41,8 +41,7 @@ public class DifferentDigits {
 				index = i;
 			}
 		}
-		System.out.println("Number with less different digits " + copyOfNumbersInString[index] +
-				" with " + minValueOfDifferentDigits + " different digits");
+		System.out.println("Number with less different digits " + copyOfNumbersInString[index]);
 	}
 
 }
