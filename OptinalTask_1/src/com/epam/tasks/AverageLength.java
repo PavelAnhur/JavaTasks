@@ -1,20 +1,22 @@
-package com.epam;
+package com.epam.tasks;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AverageLength extends InputNumbers {
+public class AverageLength {
 
+	int n;
+	long[] numbersFromConsole;
 
-	public AverageLength(int n, long[] numbersFromInputNumbersClass) {
-		super(n);
-		this.numbersFromInputNumbersClass = numbersFromInputNumbersClass;
+	public AverageLength(int n, long[] numbersFromConsole) {
+		this.n = n;
+		this.numbersFromConsole = numbersFromConsole;
 	}
 
-	public List<Integer> getLengthOfNumbers() {
+	public List<Integer> getLengthOfNumbers(int n, long[] numbersFromConsole) {
 		List<Integer> digitsOfNumbers = new ArrayList<>();
 		long[] copyOfNumbers = new long[n];
-		System.arraycopy(numbersFromInputNumbersClass, 0, copyOfNumbers, 0, numbersFromInputNumbersClass.length);
+		System.arraycopy(numbersFromConsole, 0, copyOfNumbers, 0, numbersFromConsole.length);
 
 		for (int i = 0; i < copyOfNumbers.length; i++) {
 			int digit = 0;
@@ -28,13 +30,13 @@ public class AverageLength extends InputNumbers {
 	}
 
 	public void outputDigits() {  //This method created just for control
-		List<Integer> list = getLengthOfNumbers();
+		List<Integer> list = getLengthOfNumbers(n, numbersFromConsole);
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println("Digits of number " + numbersFromInputNumbersClass[i] + " = " + list.get(i));
+			System.out.println("Digits of number " + numbersFromConsole[i] + " = " + list.get(i));
 		}
 	}
 
-	public int averageDigit(List<Integer> listOfDigits) {
+	public int averageDigit(int n, List<Integer> listOfDigits) {
 		int averageDigit = 0;
 		for (Integer listOfDigit : listOfDigits) {
 			averageDigit += listOfDigit;
@@ -45,10 +47,10 @@ public class AverageLength extends InputNumbers {
 	public void outputNumbersWithDigitsMoreOrLessThenAverage(int averageDigit, List<Integer> list) {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i) < averageDigit)
-				System.out.println("Number " + numbersFromInputNumbersClass[i] + " with " + list.get(i) + " digits " +
+				System.out.println("Number " + numbersFromConsole[i] + " with " + list.get(i) + " digits " +
 						" is number with digits less then average = " + averageDigit);
 			if (list.get(i) > averageDigit)
-				System.out.println("Number " + numbersFromInputNumbersClass[i] + " with " + list.get(i) + " digits " +
+				System.out.println("Number " + numbersFromConsole[i] + " with " + list.get(i) + " digits " +
 						" is number with digits more then average = " + averageDigit);
 		}
 	}

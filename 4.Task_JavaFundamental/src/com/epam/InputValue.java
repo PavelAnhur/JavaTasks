@@ -29,10 +29,10 @@ public class InputValue {
 		do {
 			if (isInputANumber())
 				numberOfElements = inputValue;
-			if (numberOfElements > 0)
+			if (numberOfElements > 0) {
 				return numberOfElements;
-			else
-				System.out.println("Invalid value");
+			} else
+				System.out.println("Your number is less than zero");
 		} while (true);
 	}
 

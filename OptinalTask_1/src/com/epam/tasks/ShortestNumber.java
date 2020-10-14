@@ -1,20 +1,24 @@
-package com.epam;
+package com.epam.tasks;
+
+import com.epam.util.Numbers;
 
 import java.util.Arrays;
 
-public class ShortestNumber extends InputNumbers {
+public class ShortestNumber {
 
-	private long[] numbersFromInputNumbersClass;
+	int n;
+	long[] numbersFromInputNumbersClass;
 	private long shortestNumber;
 	private int digitOfShortestNumber;
 
 
 	public ShortestNumber(int n, long[] numbersInputNumbersClass) { //constructor for ShortestNumber object
-		super(n);
+		this.n = n;
 		this.numbersFromInputNumbersClass = numbersInputNumbersClass;
 	}
 
 	public long getShortestNumber() {
+		int n = Numbers.getN();
 		long[] copyOfInputNumbersArray = new long[n];  //create new array with elements from InputNumbers
 		Arrays.setAll(copyOfInputNumbersArray, i -> numbersFromInputNumbersClass[i]);
 

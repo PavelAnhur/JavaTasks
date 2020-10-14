@@ -1,22 +1,23 @@
-package com.epam;
+package com.epam.tasks;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SortNumbers extends InputNumbers {
+public class SortNumbers {
 
-	private long[] numbersFromInputNumbersClass;
+	long[] numbersFromNumbersClass;
+	int n;
 
-	public SortNumbers(int n, long[] numbersInputNumbersClass) {
-		super(n);
-		this.numbersFromInputNumbersClass = numbersInputNumbersClass;
+	public SortNumbers(int n, long[] numbersFromNumbersClass) {
+		this.n = n;
+		this.numbersFromNumbersClass = numbersFromNumbersClass;
 	}
 
 	public void sortNumbers() {
 
 		List<Long> numbersFromMinToMax = new ArrayList<>();  //copy of values from InputNumber class
-		for (long fromInputNumbersClass : numbersFromInputNumbersClass) {
+		for (long fromInputNumbersClass : numbersFromNumbersClass) {
 			numbersFromMinToMax.add(fromInputNumbersClass);
 		}
 

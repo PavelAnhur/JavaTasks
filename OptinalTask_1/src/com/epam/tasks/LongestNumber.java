@@ -1,21 +1,22 @@
-package com.epam;
+package com.epam.tasks;
 
 import java.util.Arrays;
 
-public class LongestNumber extends InputNumbers {
+public class LongestNumber {
 
-	private long[] numbersFromInputNumbersClass;
+	int n;
+	private final long[] numbers;
 	private long longestNumber;
 	private int digitOfLongestNumber = 0;
 
-	public LongestNumber(int n, long[] numbersInputNumbersClass) {
-		super(n);
-		this.numbersFromInputNumbersClass = numbersInputNumbersClass;
+	public LongestNumber(int n, long[] numbersFromNumbersClass) {
+		this.n = n;
+		this.numbers = numbersFromNumbersClass;
 	}
 
 	public long getLongestNumber() {
 		long[] copyOfInputNumbersArray = new long[n]; //create new array with elements from InputNumbers
-		Arrays.setAll(copyOfInputNumbersArray, i -> numbersFromInputNumbersClass[i]);
+		Arrays.setAll(copyOfInputNumbersArray, i -> numbers[i]);
 
 		for (int i = 0; i < copyOfInputNumbersArray.length; i++) {
 			int digit = 0;
@@ -25,9 +26,9 @@ public class LongestNumber extends InputNumbers {
 			}
 			if (i == 0) {
 				digitOfLongestNumber = digit;
-				longestNumber = numbersFromInputNumbersClass[i];
+				longestNumber = numbers[i];
 			} else if (digitOfLongestNumber <= digit) {
-				longestNumber = numbersFromInputNumbersClass[i];
+				longestNumber = numbers[i];
 				digitOfLongestNumber = digit;
 			}
 		}
