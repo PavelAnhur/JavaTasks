@@ -7,43 +7,24 @@ import java.util.List;
 public class OddEvenDigit {
 
 	int n;
-	long[] numbersFromNumbersClass;
+	long[] numbers;
+	private final List<Long> numbersWithEvenDigits = new ArrayList<>();
+	private final List<Long> numbersWithNotEvenDigits = new ArrayList<>();
+	private int countOfNumbersWithSameOddAndEvenDigits = 0;
 
-	public OddEvenDigit(int n, long[] numbersFromNumbersClass) {
+
+	public OddEvenDigit(int n, long[] numbers) {
 		this.n = n;
-		this.numbersFromNumbersClass = numbersFromNumbersClass;
+		this.numbers = numbers;
 	}
 
-	public void getNumberWithOddAndEvenDigits(long[] numbersFromNumbersClass) {
-		List<Long> numbersWithEvenDigits = new ArrayList<>();
-		List<Long> numbersWithNotEvenDigits = new ArrayList<>();
-		int countOfNumbersWithSameOddAndEvenDigits = 0;
-		long[] copyOfNumbers = Arrays.stream(numbersFromNumbersClass, 0, n).toArray();
+	public void getNumberWithOddAndEvenDigits() {
+		sortNumberWithOddAndEvenDigits();
+		outputNumbersInConsole();
+	}
 
-		for (int i = 0; i < copyOfNumbers.length; i++) {
-			long digit;
-			int counterOfDigits = 0;
-			int counterOfEvenDigits = 0;
-			int counterOfOddDigits = 0;
 
-			while (Math.abs(copyOfNumbers[i]) > 0) {
-				counterOfDigits++;
-				digit = copyOfNumbers[i] % 2;
-				if (digit == 0) {
-					counterOfEvenDigits++;
-				} else {
-					counterOfOddDigits++;
-				}
-				copyOfNumbers[i] /= 10;
-			}
-			if (counterOfDigits == counterOfEvenDigits) {
-				numbersWithEvenDigits.add(numbersFromNumbersClass[i]);
-			} else if (counterOfEvenDigits == counterOfOddDigits) {
-				countOfNumbersWithSameOddAndEvenDigits++;
-			} else {
-				numbersWithNotEvenDigits.add(numbersFromNumbersClass[i]);
-			}
-		}
+	private void outputNumbersInConsole() {
 		if (numbersWithEvenDigits.size() != 0) {
 			for (Long numbersWithEvenDigit : numbersWithEvenDigits) {
 				System.out.println("Number with all even digits : " + numbersWithEvenDigit);
@@ -57,8 +38,35 @@ public class OddEvenDigit {
 			}
 		}
 		if (countOfNumbersWithSameOddAndEvenDigits != 0) {
-			System.out.println("There are (is) " + countOfNumbersWithSameOddAndEvenDigits + " numbers with +" +
-					" equal odd and even digits");
+			System.out.println("There are (is) " + countOfNumbersWithSameOddAndEvenDigits + " number(s) with " +
+					" equal value odd and even digits");
+		}
+	}
+
+	private void sortNumberWithOddAndEvenDigits() {
+		long[] copyOfNumbers = Arrays.stream(numbers, 0, n).toArray();
+		for (int i = 0; i < copyOfNumbers.length; i++) {
+			int counterOfDigits = 0;
+			int counterOfEvenDigits = 0;
+			int counterOfOddDigits = 0;
+			int digit;
+			while (Math.abs(copyOfNumbers[i]) > 0) {
+				counterOfDigits++;
+				digit = (int) (copyOfNumbers[i] % 2);
+				if (digit == 0) {
+					counterOfEvenDigits++;
+				} else {
+					counterOfOddDigits++;
+				}
+				copyOfNumbers[i] /= 10;
+			}
+			if (counterOfDigits == counterOfEvenDigits) {
+				numbersWithEvenDigits.add(numbers[i]);
+			} else if (counterOfEvenDigits == counterOfOddDigits) {
+				countOfNumbersWithSameOddAndEvenDigits++;
+			} else {
+				numbersWithNotEvenDigits.add(numbers[i]);
+			}
 		}
 	}
 }

@@ -1,42 +1,26 @@
 package com.epam.tasks;
 
+import java.util.Arrays;
+
 public class DifferentDigits {
 
 	int n;
-	long[] numbersFromNumbersClass;
+	long[] numbers;
 
 	public DifferentDigits(int n, long[] numbers) {
 		this.n = n;
-		this.numbersFromNumbersClass = numbers;
+		this.numbers = numbers;
 	}
 
-	public void numberWithLessValueOfDifferentDigits(long[] numbers) {
-		String[] copyOfNumbersInString = new String[n];
-		for (int i = 0; i < numbers.length; i++) {
-			copyOfNumbersInString[i] = String.valueOf((numbers[i]));
-		}
+	public void getNumberWithLessValueOfDifferentDigits() {
+		String[] copyOfNumbersInString = getCopyOfArray(numbers);
 
-		int[] differentDigitsInNumber = new int[n];
-		for (int i = copyOfNumbersInString.length - 1; i > 0; i--) {
+		int[] differentDigitsInNumber = getCountOfDifferentDigitsForEachNumber(copyOfNumbersInString);
 
-			int equalDigit = 0;
-			int counterOfDigits = 0;
-
-			for (int j = 0; j < copyOfNumbersInString[i].length(); j++) {
-				counterOfDigits++;
-				if (copyOfNumbersInString[i].charAt(i) == copyOfNumbersInString[i].charAt(j)) {
-					equalDigit++;
-				}
-			}
-			differentDigitsInNumber[i] = counterOfDigits - equalDigit;
-		}
 		int index = 0;
-		int minValueOfDifferentDigits = 0;
-		for (int i = differentDigitsInNumber.length - 1; i > 0; i--) {
-			if (i == differentDigitsInNumber.length - 1) {
-				minValueOfDifferentDigits = differentDigitsInNumber[i];
-				index = i;
-			} else if (minValueOfDifferentDigits >= differentDigitsInNumber[i]) {
+		int minValueOfDifferentDigits = differentDigitsInNumber[0];
+		for (int i = 1; i < differentDigitsInNumber.length; i++) {
+			if (minValueOfDifferentDigits >= differentDigitsInNumber[i]) {
 				minValueOfDifferentDigits = differentDigitsInNumber[i];
 				index = i;
 			}
@@ -44,11 +28,34 @@ public class DifferentDigits {
 		System.out.println("Number with less different digits " + copyOfNumbersInString[index]);
 	}
 
-	public long getNumberWithDifferentDigitsOnly(long[] numbers) {
-		long[] copyOfNumbers = new long[n];
-		for (int i = 0; i < copyOfNumbers.length; i++) {
-			copyOfNumbers[i] = numbers[i];
+	private String[] getCopyOfArray(long[] numbers){
+		String[] copyOfNumbersInString = new String[n];
+		for (int i = 0; i < numbers.length; i++) {
+			copyOfNumbersInString[i] = String.valueOf((numbers[i]));
 		}
+		return copyOfNumbersInString;
+	}
+
+	private int[] getCountOfDifferentDigitsForEachNumber(String[] numbersInStringType){
+		int[] differentDigitsInNumber = new int[n];
+		for (int i = 0;i < numbersInStringType.length; i++) {
+
+			int equalDigit = 0;
+			int counterOfDigits = 0;
+
+			for (int j = 0; j < numbersInStringType[i].length(); j++) {
+				counterOfDigits++;
+				if (numbersInStringType[i].charAt(i) == numbersInStringType[i].charAt(j)) {
+					equalDigit++;
+				}
+			}
+			differentDigitsInNumber[i] = counterOfDigits - equalDigit;
+		}
+		return differentDigitsInNumber;
+	}
+
+	public long getNumberWithDifferentDigitsOnly() {
+		long[] copyOfNumbers = Arrays.stream(numbers, 0, n).toArray();
 
 		for (int i = 0; i < copyOfNumbers.length; i++) {
 			int digit, previousDigit = (int) (copyOfNumbers[i] % 10);

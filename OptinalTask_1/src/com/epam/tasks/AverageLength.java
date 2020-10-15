@@ -6,17 +6,17 @@ import java.util.List;
 public class AverageLength {
 
 	int n;
-	long[] numbersFromConsole;
+	long[] numbers;
 
 	public AverageLength(int n, long[] numbersFromConsole) {
 		this.n = n;
-		this.numbersFromConsole = numbersFromConsole;
+		this.numbers = numbersFromConsole;
 	}
 
-	public List<Integer> getLengthOfNumbers(int n, long[] numbersFromConsole) {
+	public List<Integer> getLengthOfNumbers() {
 		List<Integer> digitsOfNumbers = new ArrayList<>();
 		long[] copyOfNumbers = new long[n];
-		System.arraycopy(numbersFromConsole, 0, copyOfNumbers, 0, numbersFromConsole.length);
+		System.arraycopy(numbers, 0, copyOfNumbers, 0, numbers.length);
 
 		for (int i = 0; i < copyOfNumbers.length; i++) {
 			int digit = 0;
@@ -30,9 +30,9 @@ public class AverageLength {
 	}
 
 	public void outputDigits() {  //This method created just for control
-		List<Integer> list = getLengthOfNumbers(n, numbersFromConsole);
+		List<Integer> list = getLengthOfNumbers();
 		for (int i = 0; i < list.size(); i++) {
-			System.out.println("Digits of number " + numbersFromConsole[i] + " = " + list.get(i));
+			System.out.println("Digits of number " + numbers[i] + " = " + list.get(i));
 		}
 	}
 
@@ -47,10 +47,10 @@ public class AverageLength {
 	public void outputNumbersWithDigitsMoreOrLessThenAverage(int averageDigit, List<Integer> list) {
 		for (int i = 0; i < list.size(); i++) {
 			if (list.get(i) < averageDigit)
-				System.out.println("Number " + numbersFromConsole[i] + " with " + list.get(i) + " digits " +
+				System.out.println("Number " + numbers[i] + " with " + list.get(i) + " digits " +
 						" is number with digits less then average = " + averageDigit);
 			if (list.get(i) > averageDigit)
-				System.out.println("Number " + numbersFromConsole[i] + " with " + list.get(i) + " digits " +
+				System.out.println("Number " + numbers[i] + " with " + list.get(i) + " digits " +
 						" is number with digits more then average = " + averageDigit);
 		}
 	}

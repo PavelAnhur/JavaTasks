@@ -1,5 +1,7 @@
 package com.epam.tasks;
 
+import java.util.stream.IntStream;
+
 public class DigitsInAscendingOrder {
 
 	int n;
@@ -10,12 +12,10 @@ public class DigitsInAscendingOrder {
 		this.numbers = numbers;
 	}
 
-	public long getNumberWithAscendingOrderDigits(long[] numbers) {
+	public long getNumberWithAscendingOrderDigits() {
 
 		long[] copyOfNumber = new long[n];
-		for (int i = 0; i  < numbers.length; i++) {
-			copyOfNumber[i] = numbers[i];
-		}
+		IntStream.range(0, numbers.length).forEachOrdered(i -> copyOfNumber[i] = numbers[i]);
 
 		for (int i = 0; i < copyOfNumber.length; i++) {
 

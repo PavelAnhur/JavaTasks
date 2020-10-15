@@ -1,26 +1,25 @@
 package com.epam.tasks;
 
 import com.epam.util.Numbers;
-
 import java.util.Arrays;
 
 public class ShortestNumber {
 
 	int n;
-	long[] numbersFromInputNumbersClass;
+	long[] numbers;
 	private long shortestNumber;
 	private int digitOfShortestNumber;
 
 
 	public ShortestNumber(int n, long[] numbersInputNumbersClass) { //constructor for ShortestNumber object
 		this.n = n;
-		this.numbersFromInputNumbersClass = numbersInputNumbersClass;
+		this.numbers = numbersInputNumbersClass;
 	}
 
 	public long getShortestNumber() {
 		int n = Numbers.getN();
 		long[] copyOfInputNumbersArray = new long[n];  //create new array with elements from InputNumbers
-		Arrays.setAll(copyOfInputNumbersArray, i -> numbersFromInputNumbersClass[i]);
+		Arrays.setAll(copyOfInputNumbersArray, i -> numbers[i]);
 
 		for (int i = 0; i < copyOfInputNumbersArray.length; i++) {
 			int digit = 0;
@@ -30,9 +29,9 @@ public class ShortestNumber {
 			}
 			if (i == 0) {
 				digitOfShortestNumber = digit;
-				shortestNumber = numbersFromInputNumbersClass[i];
+				shortestNumber = numbers[i];
 			} else if (digitOfShortestNumber >= digit) {
-				shortestNumber = numbersFromInputNumbersClass[i];
+				shortestNumber = numbers[i];
 				digitOfShortestNumber = digit;
 			}
 		}

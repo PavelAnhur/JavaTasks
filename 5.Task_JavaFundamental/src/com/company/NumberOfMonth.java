@@ -7,7 +7,7 @@ public class NumberOfMonth {
 	private static final Scanner scanner = new Scanner(System.in);
 
 
-	public int checkNumber() {
+	public int getMonthNumberFromKeyboard() {
 		System.out.println("Enter number of month");
 		do {
 			try {
