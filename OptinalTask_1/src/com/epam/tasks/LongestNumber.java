@@ -15,19 +15,17 @@ public class LongestNumber {
 	}
 
 	public long getLongestNumber() {
-		long[] copyOfInputNumbersArray = new long[n]; //create new array with elements from InputNumbers
-		Arrays.setAll(copyOfInputNumbersArray, i -> numbers[i]);
+		long[] copyOfNumbers = new long[n]; //create new array with elements from InputNumbers
+		Arrays.setAll(copyOfNumbers, i -> numbers[i]);
 
-		for (int i = 0; i < copyOfInputNumbersArray.length; i++) {
+		digitOfLongestNumber = 0;
+		for (int i = 0; i < copyOfNumbers.length; i++) {
 			int digit = 0;
-			while (Math.abs(copyOfInputNumbersArray[i]) > 0) {
+			while (Math.abs(copyOfNumbers[i]) > 0) {
 				digit++;
-				copyOfInputNumbersArray[i] /= 10;
+				copyOfNumbers[i] /= 10;
 			}
-			if (i == 0) {
-				digitOfLongestNumber = digit;
-				longestNumber = numbers[i];
-			} else if (digitOfLongestNumber <= digit) {
+			if (digitOfLongestNumber <= digit) {
 				longestNumber = numbers[i];
 				digitOfLongestNumber = digit;
 			}

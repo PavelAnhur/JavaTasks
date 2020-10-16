@@ -31,12 +31,13 @@ public class Main {
 		AverageLength averageLength = new AverageLength(n, numbersOfLongType);
 		averageLength.outputDigits();
 		System.out.println("******************");
-		int averageDigit = averageLength.averageDigit(n, averageLength.getLengthOfNumbers());
+		int averageDigit = averageLength.getAverageDigit(n, averageLength.getLengthOfNumbers());
 		List<Integer> listDigitsOfNumbers = averageLength.getLengthOfNumbers();
 		averageLength.outputNumbersWithDigitsMoreOrLessThenAverage(averageDigit, listDigitsOfNumbers);
 		System.out.println("------------------");
 
-		new DifferentDigits(n, numbersOfLongType).getNumberWithLessValueOfDifferentDigits();
+		DifferentDigits differentDigits = new DifferentDigits(n, numbersOfLongType);
+		differentDigits.getNumberWithLessValueOfDifferentDigits();
 		System.out.println(" -----------------");
 
 		new OddEvenDigit(n, numbersOfLongType).getNumberWithOddAndEvenDigits();
@@ -50,7 +51,11 @@ public class Main {
 		}
 		System.out.println("------------------");
 
-		System.out.println("Number with different digits only: " +
-				new DifferentDigits(n, numbersOfLongType).getNumberWithDifferentDigitsOnly());
+		if (differentDigits.getNumberWithDifferentDigitsOnly() != -1) {
+			System.out.println("Number with different digits only: " +
+					differentDigits.getNumberWithDifferentDigitsOnly());
+		} else {
+			System.out.println("No numbers with different digits only");
+		}
 	}
 }

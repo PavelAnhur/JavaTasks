@@ -5,17 +5,11 @@ import java.util.Scanner;
 public class Numbers {
 
 	private static final Scanner scanner = new Scanner(System.in);
-	private static int n;
 	private static long[] numbers;
-	private int inputValue;
+	private long inputValue;
 
 	public Numbers(int n) {
-		Numbers.n = n;
 		numbers = new long[n];
-	}
-
-	public static int getN() {
-		return n;
 	}
 
 	public static long[] getNumbers() {
@@ -26,15 +20,15 @@ public class Numbers {
 
 		for (int i = 0; i < numbers.length; i++) {
 			System.out.println("Enter [" + i + "] element of numbers:");
-			if (isInputValueIsInteger())
+			if (isInputValueLongType())
 				numbers[i] = inputValue;
 		}
 	}
 
-	private boolean isInputValueIsInteger() {
+	private boolean isInputValueLongType() {
 		do {
 			try {
-				inputValue = Integer.parseInt(scanner.next());
+				inputValue = Long.parseLong(scanner.next());
 				return true;
 			} catch (Exception e) {
 				System.out.println("Try one more time please, it isn't a number");

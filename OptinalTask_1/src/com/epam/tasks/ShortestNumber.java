@@ -1,6 +1,5 @@
 package com.epam.tasks;
 
-import com.epam.util.Numbers;
 import java.util.Arrays;
 
 public class ShortestNumber {
@@ -17,20 +16,17 @@ public class ShortestNumber {
 	}
 
 	public long getShortestNumber() {
-		int n = Numbers.getN();
-		long[] copyOfInputNumbersArray = new long[n];  //create new array with elements from InputNumbers
-		Arrays.setAll(copyOfInputNumbersArray, i -> numbers[i]);
+		long[] copyOfNumbers = new long[n];  //create new array with elements from InputNumbers
+		Arrays.setAll(copyOfNumbers, i -> numbers[i]);
 
-		for (int i = 0; i < copyOfInputNumbersArray.length; i++) {
+		digitOfShortestNumber = 19; // max length of long number
+		for (int i = 0; i < copyOfNumbers.length; i++) {
 			int digit = 0;
-			while (Math.abs(copyOfInputNumbersArray[i]) > 0) {
+			while (Math.abs(copyOfNumbers[i]) > 0) {
 				digit++;
-				copyOfInputNumbersArray[i] /= 10;
+				copyOfNumbers[i] /= 10;
 			}
-			if (i == 0) {
-				digitOfShortestNumber = digit;
-				shortestNumber = numbers[i];
-			} else if (digitOfShortestNumber >= digit) {
+			 if (digitOfShortestNumber >= digit) {
 				shortestNumber = numbers[i];
 				digitOfShortestNumber = digit;
 			}

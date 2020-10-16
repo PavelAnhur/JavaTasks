@@ -36,7 +36,7 @@ public class AverageLength {
 		}
 	}
 
-	public int averageDigit(int n, List<Integer> listOfDigits) {
+	public int getAverageDigit(int n, List<Integer> listOfDigits) {
 		int averageDigit = 0;
 		for (Integer listOfDigit : listOfDigits) {
 			averageDigit += listOfDigit;

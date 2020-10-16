@@ -45,6 +45,7 @@ public class OddEvenDigit {
 
 	private void sortNumberWithOddAndEvenDigits() {
 		long[] copyOfNumbers = Arrays.stream(numbers, 0, n).toArray();
+
 		for (int i = 0; i < copyOfNumbers.length; i++) {
 			int counterOfDigits = 0;
 			int counterOfEvenDigits = 0;
