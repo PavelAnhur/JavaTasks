@@ -8,8 +8,8 @@ public class Numbers {
 	private static long[] numbers;
 	private long inputValue;
 
-	public Numbers(int n) {
-		numbers = new long[n];
+	public Numbers(int numberOfElementsInArray) {
+		numbers = new long[numberOfElementsInArray];
 	}
 
 	public static long[] getNumbers() {

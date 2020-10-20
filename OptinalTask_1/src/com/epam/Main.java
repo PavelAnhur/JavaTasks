@@ -8,42 +8,42 @@ import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
-		int n = 5;                              // count of numbers is array
-		Numbers numbers = new Numbers(n);
+		int numberOfElementsInArray = 5;                              // count of numbers is array
+		Numbers numbers = new Numbers(numberOfElementsInArray);
 		numbers.getNumbersFromConsoleInput();   // input values of array
 		numbers.outputNumbersFromConsoleInput();// output values of array
 		long[] numbersOfLongType = Numbers.getNumbers();
 		System.out.println("------------------");
 
-		ShortestNumber shortestNumber = new ShortestNumber(n, numbersOfLongType); // object of shortestNumber class
+		ShortestNumber shortestNumber = new ShortestNumber(numberOfElementsInArray, numbersOfLongType); // object of shortestNumber class
 		System.out.println("Shortest number in array of longs = " + shortestNumber.getShortestNumber() +
 				" with " + shortestNumber.getDigitOfShortestNumber() + " digits");
 		System.out.println("------------------");
 
-		LongestNumber longestNumber = new LongestNumber(n, numbersOfLongType); //object of longestNumber class
+		LongestNumber longestNumber = new LongestNumber(numberOfElementsInArray, numbersOfLongType); //object of longestNumber class
 		System.out.println("Longest number in array of longs = " + longestNumber.getLongestNumber() +
 				" with " + longestNumber.getDigitOfLongestNumber() + " digits");
 		System.out.println("------------------");
 
-		new SortNumbers(n, numbersOfLongType).sortNumbers();
+		new SortNumbers(numberOfElementsInArray, numbersOfLongType).sortNumbers();
 		System.out.println("------------------");
 
-		AverageLength averageLength = new AverageLength(n, numbersOfLongType);
+		AverageLength averageLength = new AverageLength(numberOfElementsInArray, numbersOfLongType);
 		averageLength.outputDigits();
 		System.out.println("******************");
-		int averageDigit = averageLength.getAverageDigit(n, averageLength.getLengthOfNumbers());
+		int averageDigit = averageLength.getAverageDigit(numberOfElementsInArray, averageLength.getLengthOfNumbers());
 		List<Integer> listDigitsOfNumbers = averageLength.getLengthOfNumbers();
 		averageLength.outputNumbersWithDigitsMoreOrLessThenAverage(averageDigit, listDigitsOfNumbers);
 		System.out.println("------------------");
 
-		DifferentDigits differentDigits = new DifferentDigits(n, numbersOfLongType);
+		DifferentDigits differentDigits = new DifferentDigits(numberOfElementsInArray, numbersOfLongType);
 		differentDigits.getNumberWithLessValueOfDifferentDigits();
 		System.out.println(" -----------------");
 
-		new OddEvenDigit(n, numbersOfLongType).getNumberWithOddAndEvenDigits();
+		new OddEvenDigit(numberOfElementsInArray, numbersOfLongType).getNumberWithOddAndEvenDigits();
 		System.out.println("------------------");
 
-		DigitsInAscendingOrder digitsInAscendingOrder = new DigitsInAscendingOrder(n, numbersOfLongType);
+		DigitsInAscendingOrder digitsInAscendingOrder = new DigitsInAscendingOrder(numberOfElementsInArray, numbersOfLongType);
 		if (digitsInAscendingOrder.getNumberWithAscendingOrderDigits() != -1) {
 			System.out.println("Number with digits in ascending order: " + digitsInAscendingOrder.getNumberWithAscendingOrderDigits());
 		} else {

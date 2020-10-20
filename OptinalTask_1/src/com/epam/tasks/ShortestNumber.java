@@ -4,19 +4,19 @@ import java.util.Arrays;
 
 public class ShortestNumber {
 
-	int n;
+	int numberOfElementsInArray;
 	long[] numbers;
 	private long shortestNumber;
 	private int digitOfShortestNumber;
 
 
-	public ShortestNumber(int n, long[] numbersInputNumbersClass) { //constructor for ShortestNumber object
-		this.n = n;
+	public ShortestNumber(int numberOfElementsInArray, long[] numbersInputNumbersClass) { //constructor for ShortestNumber object
+		this.numberOfElementsInArray = numberOfElementsInArray;
 		this.numbers = numbersInputNumbersClass;
 	}
 
 	public long getShortestNumber() {
-		long[] copyOfNumbers = new long[n];  //create new array with elements from InputNumbers
+		long[] copyOfNumbers = new long[numberOfElementsInArray];  //create new array with elements from InputNumbers
 		Arrays.setAll(copyOfNumbers, i -> numbers[i]);
 
 		digitOfShortestNumber = 19; // max length of long number

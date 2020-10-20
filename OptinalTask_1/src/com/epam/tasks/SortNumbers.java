@@ -7,10 +7,10 @@ import java.util.List;
 public class SortNumbers {
 
 	long[] numbersFromNumbersClass;
-	int n;
+	int numberOfElementsInArray;
 
-	public SortNumbers(int n, long[] numbersFromNumbersClass) {
-		this.n = n;
+	public SortNumbers(int numberOfElementsInArray, long[] numbersFromNumbersClass) {
+		this.numberOfElementsInArray = numberOfElementsInArray;
 		this.numbersFromNumbersClass = numbersFromNumbersClass;
 	}
 

@@ -6,15 +6,15 @@ import java.util.List;
 
 public class OddEvenDigit {
 
-	int n;
+	int numberOfElementsInArray;
 	long[] numbers;
 	private final List<Long> numbersWithEvenDigits = new ArrayList<>();
 	private final List<Long> numbersWithNotEvenDigits = new ArrayList<>();
 	private int countOfNumbersWithSameOddAndEvenDigits = 0;
 
 
-	public OddEvenDigit(int n, long[] numbers) {
-		this.n = n;
+	public OddEvenDigit(int numberOfElementsInArray, long[] numbers) {
+		this.numberOfElementsInArray = numberOfElementsInArray;
 		this.numbers = numbers;
 	}
 
@@ -44,7 +44,7 @@ public class OddEvenDigit {
 	}
 
 	private void sortNumberWithOddAndEvenDigits() {
-		long[] copyOfNumbers = Arrays.stream(numbers, 0, n).toArray();
+		long[] copyOfNumbers = Arrays.stream(numbers, 0, numberOfElementsInArray).toArray();
 
 		for (int i = 0; i < copyOfNumbers.length; i++) {
 			int counterOfDigits = 0;

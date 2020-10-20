@@ -4,17 +4,17 @@ import java.util.stream.IntStream;
 
 public class DigitsInAscendingOrder {
 
-	int n;
+	int numberOfElementsInArray;
 	long[] numbers;
 
-	public DigitsInAscendingOrder(int n, long[] numbers) {
-		this.n = n;
+	public DigitsInAscendingOrder(int numberOfElementsInArray, long[] numbers) {
+		this.numberOfElementsInArray = numberOfElementsInArray;
 		this.numbers = numbers;
 	}
 
 	public long getNumberWithAscendingOrderDigits() {
 
-		long[] copyOfNumber = new long[n];
+		long[] copyOfNumber = new long[numberOfElementsInArray];
 		IntStream.range(0, numbers.length).forEachOrdered(i -> copyOfNumber[i] = numbers[i]);
 
 		for (int i = 0; i < copyOfNumber.length; i++) {

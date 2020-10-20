@@ -4,18 +4,18 @@ import java.util.Arrays;
 
 public class LongestNumber {
 
-	int n;
+	int numberOfElementsInArray;
 	private final long[] numbers;
 	private long longestNumber;
 	private int digitOfLongestNumber = 0;
 
-	public LongestNumber(int n, long[] numbersFromNumbersClass) {
-		this.n = n;
+	public LongestNumber(int numberOfElementsInArray, long[] numbersFromNumbersClass) {
+		this.numberOfElementsInArray = numberOfElementsInArray;
 		this.numbers = numbersFromNumbersClass;
 	}
 
 	public long getLongestNumber() {
-		long[] copyOfNumbers = new long[n]; //create new array with elements from InputNumbers
+		long[] copyOfNumbers = new long[numberOfElementsInArray]; //create new array with elements from InputNumbers
 		Arrays.setAll(copyOfNumbers, i -> numbers[i]);
 
 		digitOfLongestNumber = 0;

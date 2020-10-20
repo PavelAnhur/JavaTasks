@@ -5,17 +5,17 @@ import java.util.List;
 
 public class AverageLength {
 
-	int n;
+	int numberOfElementsInArray;
 	long[] numbers;
 
-	public AverageLength(int n, long[] numbersFromConsole) {
-		this.n = n;
+	public AverageLength(int numberOfElementsInArray, long[] numbersFromConsole) {
+		this.numberOfElementsInArray = numberOfElementsInArray;
 		this.numbers = numbersFromConsole;
 	}
 
 	public List<Integer> getLengthOfNumbers() {
 		List<Integer> digitsOfNumbers = new ArrayList<>();
-		long[] copyOfNumbers = new long[n];
+		long[] copyOfNumbers = new long[numberOfElementsInArray];
 		System.arraycopy(numbers, 0, copyOfNumbers, 0, numbers.length);
 
 		for (int i = 0; i < copyOfNumbers.length; i++) {

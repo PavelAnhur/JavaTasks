@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public class DifferentDigits {
 
-	int n;
+	int numberOfElementsInArray;
 	long[] numbers;
 
-	public DifferentDigits(int n, long[] numbers) {
-		this.n = n;
+	public DifferentDigits(int numberOfElementsInArray, long[] numbers) {
+		this.numberOfElementsInArray = numberOfElementsInArray;
 		this.numbers = numbers;
 	}
 
@@ -29,7 +29,7 @@ public class DifferentDigits {
 	}
 
 	private String[] getCopyOfArray(long[] numbers){
-		String[] copyOfNumbersInString = new String[n];
+		String[] copyOfNumbersInString = new String[numberOfElementsInArray];
 		for (int i = 0; i < numbers.length; i++) {
 			copyOfNumbersInString[i] = String.valueOf((numbers[i]));
 		}
@@ -37,7 +37,7 @@ public class DifferentDigits {
 	}
 
 	private int[] getCountOfDifferentDigitsForEachNumber(String[] numbersInStringType){
-		int[] differentDigitsInNumber = new int[n];
+		int[] differentDigitsInNumber = new int[numberOfElementsInArray];
 		for (int i = 0;i < numbersInStringType.length; i++) {
 
 			int equalDigit = 0;
@@ -55,7 +55,7 @@ public class DifferentDigits {
 	}
 
 	public long getNumberWithDifferentDigitsOnly() {
-		long[] copyOfNumbers = Arrays.stream(numbers, 0, n).toArray();
+		long[] copyOfNumbers = Arrays.stream(numbers, 0, numberOfElementsInArray).toArray();
 
 		for (int i = 0; i < copyOfNumbers.length; i++) {
 			int digit, previousDigit = (int) (copyOfNumbers[i] % 10);
