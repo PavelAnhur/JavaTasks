@@ -1,7 +1,8 @@
 package com.epam;
 
-import java.util.Arrays;
-import java.util.Collections;
+import com.epam.student.Student;
+import com.epam.student.StudentsList;
+
 
 public class Main {
 
@@ -32,12 +33,17 @@ public class Main {
 		studentsList.addStudentToList(student3);
 		studentsList.addStudentToList(student4);
 		studentsList.addStudentToList(student5);
-		studentsList.addStudentToList(new Student("06","Mole","Pole","Mech", "3", "012MF"));
+		studentsList.addStudentToList(new Student("06", "Mole", "Pole", "Mech", "3", "012MF"));
 		studentsList.addStudentToList(new Student("07", "Hugo", "Boss", "Mech", "3", "012MF"));
+		studentsList.addStudentToList(new Student("08", "Amoke", "Nanoke", "Vavoke", "3.12.1987", "Tapochkina st.",
+				"+375-87-256-48-98", "Energy", "1", "011EF"));
 
 		studentsList.getStudentsWithSameFaculty("Energy");
 		System.out.println("--------------------");
 		studentsList.outputOnConsoleStudentsWithTheSameCourseAndFaculty();
 
+		studentsList.getStudentsWithDateOfBirthLessThenGiven(1986);
+
+		studentsList.outputOnConsoleStudentsFromSameGroup("012MF");
 	}
 }
