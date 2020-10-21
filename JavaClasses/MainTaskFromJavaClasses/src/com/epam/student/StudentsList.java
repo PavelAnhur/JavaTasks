@@ -1,23 +1,20 @@
 package com.epam.student;
 
+import com.epam.university.Faculty;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 public class StudentsList {
 
 	private final List<Student> allStudents = new ArrayList<>();
 
-//	public List<Student> getAllStudents() {
-//		return allStudents;
-//	}
-
 	public void addStudentToList(Student student) {
 		allStudents.add(student);
 	}
 
-	public void getStudentsWithSameFaculty(String faculty) {
+	public void getStudentsWithSameFaculty(Faculty faculty) {
 		for (Student student : allStudents) {
 			if (student.getFaculty().equals(faculty)) {
 				System.out.println(student.toString());
@@ -25,39 +22,22 @@ public class StudentsList {
 		}
 	}
 
-//	private void getStudentsFromSameCourse() {
-//		int course = 1;
-//		while (course <= 6) {
-//			int counterOfStudents = 0;
-//			System.out.println("Students " + course + " course:");
-//			for (Student student : allStudents) {
-//				if (Integer.parseInt(student.getCourse()) == (course)) {
-//					counterOfStudents++;
-//				}
-//			}
-//			if (counterOfStudents == 0) {
-//				System.out.println("There are no students on this course");
-//			}
-//			course++;
-//		}
-//	}
-
 	public void outputOnConsoleStudentsWithTheSameCourseAndFaculty() {
 
-		outputOnConsoleStudentsOnTheSameFaculty("Energy");
-		outputOnConsoleStudentsOnTheSameFaculty("Mech");
-		outputOnConsoleStudentsOnTheSameFaculty("Philosophy");
+		outputOnConsoleStudentsOnTheSameFaculty(Faculty.EF);
+		outputOnConsoleStudentsOnTheSameFaculty(Faculty.MF);
+		outputOnConsoleStudentsOnTheSameFaculty(Faculty.PF);
 	}
 
-	private void outputOnConsoleStudentsOnTheSameFaculty(String faculty) {
+	private void outputOnConsoleStudentsOnTheSameFaculty(Faculty faculty) {
 
-		System.out.println("Students from " + faculty + " faculty");
+		System.out.println("Students from " + faculty.getName() + " faculty");
 
 		for (Student allStudent : allStudents) {
 			if (allStudent.getFaculty().equals(faculty)) {
 				int course = 1;
 				while (course <= 6) {
-					if (Integer.parseInt(allStudent.getCourse()) == (course)) {
+					if (allStudent.getCourse() == (course)) {
 						System.out.println(allStudent.toString());
 					}
 					course++;
@@ -97,14 +77,6 @@ public class StudentsList {
 			return -1;
 		}
 	}
-
-//	private int getYearOfBirthFromDateOfBirth(Student student) throws ParseException {
-//		String pattern = "dd.MM.yyyy";
-//		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-//		Date date = simpleDateFormat.parse(student.getDateOfBirth());
-//		return date.getYear();
-//	}
-
 }
 
 

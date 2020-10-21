@@ -1,6 +1,8 @@
 package com.epam.student;
 
-public class Student implements Comparable<Student> {
+import com.epam.university.Faculty;
+
+public class Student {
 
 	private final String id;
 	private final String FirstName;
@@ -9,13 +11,13 @@ public class Student implements Comparable<Student> {
 	private String dateOfBirth;
 	private String address;
 	private String phoneNumber;
-	private final String faculty;
-	private final String course;
+	private final Faculty faculty;
+	private final int course;
 	private final String numberOfGroup;
 
 	public Student(String id, String firstName, String lastName,
 	               String middleName, String dateOfBirth, String address,
-	               String phoneNumber, String faculty, String course, String numberOfGroup) {
+	               String phoneNumber, Faculty faculty, int course, String numberOfGroup) {
 		this.id = id;
 		this.FirstName = firstName;
 		this.LastName = lastName;
@@ -28,15 +30,7 @@ public class Student implements Comparable<Student> {
 		this.numberOfGroup = numberOfGroup;
 	}
 
-//	public Student(String id, String firstName, String lastName, String middleName, String faculty) {
-//		this.id = id;
-//		FirstName = firstName;
-//		LastName = lastName;
-//		this.middleName = middleName;
-//		this.faculty = faculty;
-//	}
-
-	public Student(String id, String firstName, String lastName, String faculty, String course, String numberOfGroup) {
+	public Student(String id, String firstName, String lastName, Faculty faculty, int course, String numberOfGroup) {
 		this.id = id;
 		FirstName = firstName;
 		LastName = lastName;
@@ -45,39 +39,15 @@ public class Student implements Comparable<Student> {
 		this.numberOfGroup = numberOfGroup;
 	}
 
-//	public String getId() {
-//		return id;
-//	}
-//
-//	public String getFirstName() {
-//		return FirstName;
-//	}
-//
-//	public String getLastName() {
-//		return LastName;
-//	}
-//
-//	public String getMiddleName() {
-//		return middleName;
-//	}
-
 	public String getDateOfBirth() {
 		return dateOfBirth;
 	}
 
-//	public String getAddress() {
-//		return address;
-//	}
-//
-//	public String getPhoneNumber() {
-//		return phoneNumber;
-//	}
-
-	public String getFaculty() {
+	public Faculty getFaculty() {
 		return faculty;
 	}
 
-	public String getCourse() {
+	public int getCourse() {
 		return course;
 	}
 
@@ -88,23 +58,16 @@ public class Student implements Comparable<Student> {
 	@Override
 	public String toString() {
 		return "Student{" +
-				"id='" + id + '\'' +
-				", FirstName='" + FirstName + '\'' +
-				", LastName='" + LastName + '\'' +
-				", middleName='" + middleName + '\'' +
-				", dateOfBirth='" + dateOfBirth + '\'' +
-				", address='" + address + '\'' +
-				", phoneNumber='" + phoneNumber + '\'' +
-				", faculty='" + faculty + '\'' +
-				", course='" + course + '\'' +
-				", numberOfGroup='" + numberOfGroup + '\'' +
+				"id ='" + id + '\'' +
+				", FirstName ='" + FirstName + '\'' +
+				", LastName ='" + LastName + '\'' +
+				", middleName ='" + middleName + '\'' +
+				", dateOfBirth ='" + dateOfBirth + '\'' +
+				", address ='" + address + '\'' +
+				", phoneNumber ='" + phoneNumber + '\'' +
+				", faculty ='" + faculty + '\'' +
+				", course ='" + course + '\'' +
+				", numberOfGroup ='" + numberOfGroup + '\'' +
 				'}';
-	}
-
-
-	@Override
-	public int compareTo(Student compareStudent) {
-		int compareCourse = Integer.parseInt(compareStudent.getCourse());
-		return Integer.parseInt(this.course) - compareCourse;
 	}
 }
