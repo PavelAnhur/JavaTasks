@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
 public class StudentsList {
 
 	private final List<Student> allStudents = new ArrayList<>();
@@ -65,7 +64,6 @@ public class StudentsList {
 			if ((yearOfStudentBirth != -1) && (yearOfStudentBirth > yearOfBirth)) {
 				System.out.println(student.toString());
 			}
-
 		}
 	}
 
@@ -78,8 +76,3 @@ public class StudentsList {
 		}
 	}
 }
-
-
-
-
-

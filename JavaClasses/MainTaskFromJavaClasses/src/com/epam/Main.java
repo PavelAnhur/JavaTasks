@@ -1,32 +1,110 @@
 package com.epam;
 
+import com.epam.university.Faculty;
 import com.epam.student.Student;
 import com.epam.student.StudentsList;
-import com.epam.university.Faculty;
-
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		Student student1 = new Student("01", "Pavel", "Anhur", "Vikent'evich",
-				"27.07.1981", "Mendeleeva st. 8-3", "+375-33-623-58-40", Faculty.EF,
-				6, "011EF");
+		Student student1 = new Student.Builder()
+				.withId("01")
+				.withFirstName("Pavel")
+				.withLastName("Anhur")
+				.withMiddleName("Vikent'evich")
+				.withDateOfBirth("27.07.1981")
+				.withAddress("Mendeleeva st. 8-3")
+				.withPhoneNumber("+375-33-623-58-40")
+				.withFaculty(Faculty.EF)
+				.withCourse(6)
+				.withNumberOfGroup("011EF")
+				.build();
 
-		Student student2 = new Student("02", "Mike", "Kotlin", "Olegovich",
-				"22.07.1984", "Logojskiy trakt 10-12", "+357-92-658-47-68",
-				Faculty.EF, 3, "021EF");
+		Student student2 = new Student.Builder()
+				.withId("02")
+				.withFirstName("Mike")
+				.withLastName("Kotlin")
+				.withMiddleName("Olegovich")
+				.withDateOfBirth("22.07.1984")
+				.withAddress("Logojskiy trakt 10-12")
+				.withPhoneNumber("+357-92-658-47-68")
+				.withFaculty(Faculty.EF)
+				.withCourse(3)
+				.withNumberOfGroup("021EF")
+				.build();
 
-		Student student3 = new Student("03", "Lion", "Pillone", "Halepovich", "07.21.1987",
-				"Masherova st. 99-367", "+375-33-654-45-78", Faculty.EF, 5, "045EF");
+		Student student3 = new Student.Builder()
+				.withId("03")
+				.withFirstName("Lion")
+				.withLastName("Pillone")
+				.withMiddleName("Halepovich")
+				.withDateOfBirth("07.21.1987")
+				.withAddress("Masherova st. 99-367")
+				.withPhoneNumber("+375-33-654-45-78")
+				.withFaculty(Faculty.EF)
+				.withCourse(5)
+				.withNumberOfGroup("045EF")
+				.build();
 
+		Student student4 = new Student.Builder()
+				.withId("04")
+				.withFirstName("Kate")
+				.withLastName("Ti")
+				.withMiddleName("Jordanovna")
+				.withDateOfBirth("06.11.1992")
+				.withAddress("Trudovaja st. 10-14")
+				.withPhoneNumber("+375-87-264-23-56")
+				.withFaculty(Faculty.PF)
+				.withCourse(2)
+				.withNumberOfGroup("021PF")
+				.build();
 
-		Student student4 = new Student("04", "Kate", "Ti", "Jordanovna", "06.11.1992", "Trudovaja st. 10-14",
-				"+375-87-264-23-56", Faculty.PF, 2, "011PF");
+		Student student5 = new Student.Builder()
+				.withId("05")
+				.withFirstName("Naomy")
+				.withLastName("Kampbel")
+				.withMiddleName("Krasotkovich")
+				.withDateOfBirth("01.12.1985")
+				.withAddress("Brooklin st.")
+				.withPhoneNumber("+375-99-999-88-77")
+				.withFaculty(Faculty.MF)
+				.withCourse(3)
+				.withNumberOfGroup("032MF")
+				.build();
 
-		Student student5 = new Student("05", "Naomy", "Kampbel", "Krasotkovich", "01.12.1985", "Brooklin st.",
-				"+375-99-999-88-77", Faculty.MF, 3, "012MF");
+		Student student6 = new Student.Builder()
+				.withId("06")
+				.withFirstName("Mole")
+				.withLastName("Pole")
+				.withDateOfBirth("01.12.1986")
+				.withFaculty(Faculty.MF)
+				.withCourse(3)
+				.withNumberOfGroup("032MF")
+				.build();
 
+		Student student7 = new Student.Builder()
+				.withId("07")
+				.withFirstName("Hugo")
+				.withLastName("Boss")
+				.withDateOfBirth("01.07.1987")
+				.withFaculty(Faculty.MF)
+				.withCourse(3)
+				.withNumberOfGroup("032MF")
+				.build();
+
+		Student student8 = new Student.Builder()
+				.withId("08")
+				.withFirstName("Amoke")
+				.withLastName("Nanoke")
+				.withMiddleName("Vavoke")
+				.withDateOfBirth("3.12.1987")
+				.withAddress("Tapochkina st.")
+				.withPhoneNumber("+375-87-256-48-98")
+				.withFaculty(Faculty.EF)
+				.withCourse(1)
+				.withNumberOfGroup("011EF")
+				.build();
 
 		StudentsList studentsList = new StudentsList();
 		studentsList.addStudentToList(student1);
@@ -34,10 +112,9 @@ public class Main {
 		studentsList.addStudentToList(student3);
 		studentsList.addStudentToList(student4);
 		studentsList.addStudentToList(student5);
-		studentsList.addStudentToList(new Student("06", "Mole", "Pole", Faculty.MF, 3, "012MF"));
-		studentsList.addStudentToList(new Student("07", "Hugo", "Boss", Faculty.MF, 3, "012MF"));
-		studentsList.addStudentToList(new Student("08", "Amoke", "Nanoke", "Vavoke", "3.12.1987",
-				"Tapochkina st.", "+375-87-256-48-98", Faculty.EF, 1, "011EF"));
+		studentsList.addStudentToList(student6);
+		studentsList.addStudentToList(student7);
+		studentsList.addStudentToList(student8);
 
 		studentsList.getStudentsWithSameFaculty(Faculty.EF);
 		System.out.println("--------------------");
@@ -45,6 +122,6 @@ public class Main {
 		System.out.println("--------------------");
 		studentsList.getStudentsWithDateOfBirthLessThenGiven(1986);
 		System.out.println("--------------------");
-		studentsList.outputOnConsoleStudentsFromSameGroup("012MF");
+		studentsList.outputOnConsoleStudentsFromSameGroup("032MF");
 	}
 }
