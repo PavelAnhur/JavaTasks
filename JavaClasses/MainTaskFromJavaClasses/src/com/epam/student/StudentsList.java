@@ -82,10 +82,19 @@ public class StudentsList {
 		System.out.println("Students, who born after " + yearOfBirth + " year");
 		for (Student student : allStudents) {
 			int yearOfStudentBirth = getYearOfBirth(student);
-			if (((yearOfStudentBirth != -1)) && (yearOfStudentBirth > yearOfBirth)) {
+			if ((yearOfStudentBirth != -1) && (yearOfStudentBirth > yearOfBirth)) {
 				System.out.println(student.toString());
 			}
 
+		}
+	}
+
+	public int getYearOfBirth(Student student) {
+		if (student.getDateOfBirth() != null) {
+			StringBuilder dateOfBirth = new StringBuilder(student.getDateOfBirth());
+			return Integer.parseInt(dateOfBirth.substring(6));
+		} else {
+			return -1;
 		}
 	}
 
@@ -96,14 +105,6 @@ public class StudentsList {
 //		return date.getYear();
 //	}
 
-	public int getYearOfBirth(Student student) {
-		if (student.getDateOfBirth() != null) {
-			StringBuilder dateOfBirth = new StringBuilder(student.getDateOfBirth());
-			return Integer.parseInt(dateOfBirth.substring(6));
-		} else {
-			return -1;
-		}
-	}
 }
 
 
