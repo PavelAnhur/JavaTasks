@@ -69,8 +69,10 @@ public class StudentsList {
 
 	public int getYearOfBirth(Student student) {
 		if (student.getDateOfBirth() != null) {
-			StringBuilder dateOfBirth = new StringBuilder(student.getDateOfBirth());
-			return Integer.parseInt(dateOfBirth.substring(6));
+			String[] separateNumbers;
+			String delimiter = "\\.";
+			separateNumbers = student.getDateOfBirth().split(delimiter);
+			return Integer.parseInt(separateNumbers[2]);
 		} else {
 			return -1;
 		}
