@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Student student1 = new Student.studentBuilder()
+		Student studentAnhur = new Student.StudentBuilder()
 				.withId("01")
 				.withFirstName("Pavel")
 				.withLastName("Anhur")
@@ -21,7 +21,7 @@ public class Main {
 				.withNumberOfGroup("011EF")
 				.build();
 
-		Student student2 = new Student.studentBuilder()
+		Student studentKotlin = new Student.StudentBuilder()
 				.withId("02")
 				.withFirstName("Mike")
 				.withLastName("Kotlin")
@@ -34,7 +34,7 @@ public class Main {
 				.withNumberOfGroup("021EF")
 				.build();
 
-		Student student3 = new Student.studentBuilder()
+		Student studentPillone = new Student.StudentBuilder()
 				.withId("03")
 				.withFirstName("Lion")
 				.withLastName("Pillone")
@@ -47,7 +47,7 @@ public class Main {
 				.withNumberOfGroup("045EF")
 				.build();
 
-		Student student4 = new Student.studentBuilder()
+		Student studentTi = new Student.StudentBuilder()
 				.withId("04")
 				.withFirstName("Kate")
 				.withLastName("Ti")
@@ -60,7 +60,7 @@ public class Main {
 				.withNumberOfGroup("021PF")
 				.build();
 
-		Student student5 = new Student.studentBuilder()
+		Student studentKampbel = new Student.StudentBuilder()
 				.withId("05")
 				.withFirstName("Naomy")
 				.withLastName("Kampbel")
@@ -73,7 +73,7 @@ public class Main {
 				.withNumberOfGroup("032MF")
 				.build();
 
-		Student student6 = new Student.studentBuilder()
+		Student studentPole = new Student.StudentBuilder()
 				.withId("06")
 				.withFirstName("Mole")
 				.withLastName("Pole")
@@ -83,7 +83,7 @@ public class Main {
 				.withNumberOfGroup("032MF")
 				.build();
 
-		Student student7 = new Student.studentBuilder()
+		Student studentBoss = new Student.StudentBuilder()
 				.withId("07")
 				.withFirstName("Hugo")
 				.withLastName("Boss")
@@ -93,7 +93,7 @@ public class Main {
 				.withNumberOfGroup("032MF")
 				.build();
 
-		Student student8 = new Student.studentBuilder()
+		Student studentNanoke = new Student.StudentBuilder()
 				.withId("08")
 				.withFirstName("Amoke")
 				.withLastName("Nanoke")
@@ -107,14 +107,14 @@ public class Main {
 				.build();
 
 		StudentsList studentsList = new StudentsList();
-		studentsList.addStudentToList(student1);
-		studentsList.addStudentToList(student2);
-		studentsList.addStudentToList(student3);
-		studentsList.addStudentToList(student4);
-		studentsList.addStudentToList(student5);
-		studentsList.addStudentToList(student6);
-		studentsList.addStudentToList(student7);
-		studentsList.addStudentToList(student8);
+		studentsList.addStudentToList(studentAnhur);
+		studentsList.addStudentToList(studentKotlin);
+		studentsList.addStudentToList(studentPillone);
+		studentsList.addStudentToList(studentTi);
+		studentsList.addStudentToList(studentKampbel);
+		studentsList.addStudentToList(studentPole);
+		studentsList.addStudentToList(studentBoss);
+		studentsList.addStudentToList(studentNanoke);
 
 		studentsList.printOnConsoleStudentsWithSameFaculty(Faculty.EF);
 		System.out.println("--------------------");

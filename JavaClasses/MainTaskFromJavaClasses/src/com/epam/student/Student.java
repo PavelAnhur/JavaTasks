@@ -47,59 +47,59 @@ public class Student {
 				'}';
 	}
 
-	public static class studentBuilder {
+	public static class StudentBuilder {
 		private final Student newStudent;
 
-		public studentBuilder() {
+		public StudentBuilder() {
 			newStudent = new Student();
 		}
 
-		public studentBuilder withId(String id) {
+		public StudentBuilder withId(String id) {
 			newStudent.id = id;
 			return this;
 		}
 
-		public studentBuilder withFirstName(String firstName) {
+		public StudentBuilder withFirstName(String firstName) {
 			newStudent.firstName = firstName;
 			return this;
 		}
 
-		public studentBuilder withLastName(String lastName) {
+		public StudentBuilder withLastName(String lastName) {
 			newStudent.lastName = lastName;
 			return this;
 		}
 
-		public studentBuilder withMiddleName(String middleName) {
+		public StudentBuilder withMiddleName(String middleName) {
 			newStudent.middleName = middleName;
 			return this;
 		}
 
-		public studentBuilder withDateOfBirth(String dateOfBirth) {
+		public StudentBuilder withDateOfBirth(String dateOfBirth) {
 			newStudent.dateOfBirth = dateOfBirth;
 			return this;
 		}
 
-		public studentBuilder withAddress(String address) {
+		public StudentBuilder withAddress(String address) {
 			newStudent.address = address;
 			return this;
 		}
 
-		public studentBuilder withPhoneNumber(String phoneNumber) {
+		public StudentBuilder withPhoneNumber(String phoneNumber) {
 			newStudent.phoneNumber = phoneNumber;
 			return this;
 		}
 
-		public studentBuilder withFaculty(Faculty faculty) {
+		public StudentBuilder withFaculty(Faculty faculty) {
 			newStudent.faculty = faculty;
 			return this;
 		}
 
-		public studentBuilder withCourse(int course) {
+		public StudentBuilder withCourse(int course) {
 			newStudent.course = course;
 			return this;
 		}
 
-		public studentBuilder withNumberOfGroup(String numberOfGroup) {
+		public StudentBuilder withNumberOfGroup(String numberOfGroup) {
 			newStudent.numberOfGroup = numberOfGroup;
 			return this;
 		}
