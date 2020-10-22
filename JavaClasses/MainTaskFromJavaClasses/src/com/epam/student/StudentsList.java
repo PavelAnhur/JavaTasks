@@ -14,7 +14,7 @@ public class StudentsList {
 		allStudents.add(student);
 	}
 
-	public void getStudentsWithSameFaculty(Faculty faculty) {
+	public void printOnConsoleStudentsWithSameFaculty(Faculty faculty) {
 		for (Student student : allStudents) {
 			if (student.getFaculty().equals(faculty)) {
 				System.out.println(student.toString());
@@ -22,13 +22,13 @@ public class StudentsList {
 		}
 	}
 
-	public void outputOnConsoleStudentsWithTheSameCourseAndFaculty() {
+	public void printOnConsoleStudentsWithTheSameCourseAndFaculty() {
 		for (Faculty faculty : Faculty.values()) {
-			outputOnConsoleStudentsOnTheSameFaculty(faculty);
+			printOnConsoleStudentsOnTheSameFaculty(faculty);
 		}
 	}
 
-	private void outputOnConsoleStudentsOnTheSameFaculty(Faculty faculty) {
+	private void printOnConsoleStudentsOnTheSameFaculty(Faculty faculty) {
 
 		System.out.println("Students from " + faculty.getName() + " faculty");
 
@@ -49,7 +49,7 @@ public class StudentsList {
 		return allStudents.stream().filter(student -> student.getNumberOfGroup().equals(numberOfGroup)).collect(Collectors.toList());
 	}
 
-	public void outputOnConsoleStudentsFromSameGroup(String numberOfGroup) {
+	public void printOnConsoleStudentsFromSameGroup(String numberOfGroup) {
 		List<Student> studentsFromSameGroup = getStudentsFromSameGroup(numberOfGroup);
 		System.out.println("Students from " + numberOfGroup + " group");
 		for (Student student : studentsFromSameGroup) {
@@ -57,7 +57,7 @@ public class StudentsList {
 		}
 	}
 
-	public void getStudentsWithDateOfBirthLessThenGiven(int yearOfBirth) {
+	public void printOnConsoleStudentsWithDateOfBirthLessThenGiven(int yearOfBirth) {
 		System.out.println("Students, who born after " + yearOfBirth + " year");
 		for (Student student : allStudents) {
 			int yearOfStudentBirth = getYearOfBirth(student);
@@ -67,7 +67,7 @@ public class StudentsList {
 		}
 	}
 
-	public int getYearOfBirth(Student student) {
+	private int getYearOfBirth(Student student) {
 		if (student.getDateOfBirth() != null) {
 			String[] separateNumbers;
 			String delimiter = "\\.";

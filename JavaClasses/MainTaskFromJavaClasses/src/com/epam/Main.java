@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Student student1 = new Student.Builder()
+		Student student1 = new Student.studentBuilder()
 				.withId("01")
 				.withFirstName("Pavel")
 				.withLastName("Anhur")
@@ -21,7 +21,7 @@ public class Main {
 				.withNumberOfGroup("011EF")
 				.build();
 
-		Student student2 = new Student.Builder()
+		Student student2 = new Student.studentBuilder()
 				.withId("02")
 				.withFirstName("Mike")
 				.withLastName("Kotlin")
@@ -34,7 +34,7 @@ public class Main {
 				.withNumberOfGroup("021EF")
 				.build();
 
-		Student student3 = new Student.Builder()
+		Student student3 = new Student.studentBuilder()
 				.withId("03")
 				.withFirstName("Lion")
 				.withLastName("Pillone")
@@ -47,7 +47,7 @@ public class Main {
 				.withNumberOfGroup("045EF")
 				.build();
 
-		Student student4 = new Student.Builder()
+		Student student4 = new Student.studentBuilder()
 				.withId("04")
 				.withFirstName("Kate")
 				.withLastName("Ti")
@@ -60,7 +60,7 @@ public class Main {
 				.withNumberOfGroup("021PF")
 				.build();
 
-		Student student5 = new Student.Builder()
+		Student student5 = new Student.studentBuilder()
 				.withId("05")
 				.withFirstName("Naomy")
 				.withLastName("Kampbel")
@@ -73,7 +73,7 @@ public class Main {
 				.withNumberOfGroup("032MF")
 				.build();
 
-		Student student6 = new Student.Builder()
+		Student student6 = new Student.studentBuilder()
 				.withId("06")
 				.withFirstName("Mole")
 				.withLastName("Pole")
@@ -83,7 +83,7 @@ public class Main {
 				.withNumberOfGroup("032MF")
 				.build();
 
-		Student student7 = new Student.Builder()
+		Student student7 = new Student.studentBuilder()
 				.withId("07")
 				.withFirstName("Hugo")
 				.withLastName("Boss")
@@ -93,7 +93,7 @@ public class Main {
 				.withNumberOfGroup("032MF")
 				.build();
 
-		Student student8 = new Student.Builder()
+		Student student8 = new Student.studentBuilder()
 				.withId("08")
 				.withFirstName("Amoke")
 				.withLastName("Nanoke")
@@ -116,12 +116,12 @@ public class Main {
 		studentsList.addStudentToList(student7);
 		studentsList.addStudentToList(student8);
 
-		studentsList.getStudentsWithSameFaculty(Faculty.EF);
+		studentsList.printOnConsoleStudentsWithSameFaculty(Faculty.EF);
 		System.out.println("--------------------");
-		studentsList.outputOnConsoleStudentsWithTheSameCourseAndFaculty();
+		studentsList.printOnConsoleStudentsWithTheSameCourseAndFaculty();
 		System.out.println("--------------------");
-		studentsList.getStudentsWithDateOfBirthLessThenGiven(1986);
+		studentsList.printOnConsoleStudentsWithDateOfBirthLessThenGiven(1986);
 		System.out.println("--------------------");
-		studentsList.outputOnConsoleStudentsFromSameGroup("032MF");
+		studentsList.printOnConsoleStudentsFromSameGroup("032MF");
 	}
 }
