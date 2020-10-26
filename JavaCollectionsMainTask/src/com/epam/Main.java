@@ -1,14 +1,14 @@
 package com.epam;
 
-import com.epam.enums.Color;
-import com.epam.enums.PreciousStoneType;
-import com.epam.enums.SemipreciousStoneType;
-import com.epam.enums.Transparency;
-import com.epam.stones.Stone;
+import com.epam.enumstone.Color;
+import com.epam.enumstone.PreciousStoneType;
+import com.epam.enumstone.SemipreciousStoneType;
+import com.epam.enumstone.Transparency;
+import com.epam.stone.Stone;
 import com.epam.store.Decoration;
 import com.epam.store.Jewelry;
-import com.epam.types.PreciousStone;
-import com.epam.types.SemipreciousStone;
+import com.epam.type.PreciousStone;
+import com.epam.type.SemipreciousStone;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,14 +40,14 @@ public class Main {
 
 		Jewelry jewelry = new Jewelry(stoneList);
 		System.out.println("Sorted stones with price");
-		jewelry.printSortedStonesWithPrice();
+		jewelry.printSortedStonesOfPrice();
 		System.out.println("List of precious stones:\n" + jewelry.getPreciousStones());
 		System.out.println("--------------------");
 		System.out.println("List of semiprecious stones:\n" + jewelry.getSemipreciousStones());
 		System.out.println("Sorted stones with weight");
-		jewelry.printSortedStonesWithWeight();
+		jewelry.printSortedStonesOfWeight();
 		System.out.println("********************");
 		Decoration decoration = new Decoration(stoneList);
-		decoration.askForLimitPriceAndReturnAvailableStonesForDecoration();
+		decoration.welcomeToTheStore();
 	}
 }

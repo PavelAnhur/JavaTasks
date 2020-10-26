@@ -1,8 +1,8 @@
 package com.epam.store;
 
-import com.epam.stones.Stone;
-import com.epam.types.PreciousStone;
-import com.epam.types.SemipreciousStone;
+import com.epam.stone.Stone;
+import com.epam.type.PreciousStone;
+import com.epam.type.SemipreciousStone;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -18,13 +18,13 @@ public class Jewelry {
 		return Stone.getPriceOfStone(stone);
 	}
 
-	public void printSortedStonesWithPrice() {
+	public void printSortedStonesOfPrice() {
 		stoneList.stream()
 				.sorted(Comparator.comparingDouble(this::getPriceOfStone))
 				.forEach(stone -> System.out.println(stone + " with price " + getPriceOfStone(stone)));
 	}
 
-	public void printSortedStonesWithWeight() {
+	public void printSortedStonesOfWeight() {
 		stoneList.stream()
 				.sorted(Comparator.comparingDouble(Stone::getWeightOfStoneInCarat))
 				.forEach(stone -> System.out.println(stone + " with weight " + stone.getWeightOfStoneInCarat()));
@@ -49,7 +49,6 @@ public class Jewelry {
 		}
 		return semipreciousStoneList;
 	}
-
 
 	@Override
 	public String toString() {

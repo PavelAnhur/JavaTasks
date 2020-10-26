@@ -1,6 +1,6 @@
 package com.epam.store;
 
-import com.epam.stones.Stone;
+import com.epam.stone.Stone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ public class Decoration {
 
 	private static final Scanner scanner = new Scanner(System.in);
 	private final List<Stone> stoneList;
+	private List<Stone> listOfStonesForDecoration;
 	private double priceOfDecoration;
 	private double inputValue;
 
@@ -18,15 +19,15 @@ public class Decoration {
 		this.stoneList = stoneList;
 	}
 
-	public void askForLimitPriceAndReturnAvailableStonesForDecoration() {
+	public void welcomeToTheStore() {
 		System.out.println("Welcome to jewelry store");
 		do {
 			int selection = menuWithChoice();
 			if (selection == 1) {
-				methodsForChoiceOne();
+				withLimitPrice();
 				break;
 			} else if (selection == 2) {
-				methodsForChoiceTwo();
+				noLimitPrice();
 				break;
 			} else if (selection == 0) {
 				System.out.println("See you next time!");
@@ -37,6 +38,62 @@ public class Decoration {
 		} while (true);
 	}
 
+	public void printStonesAvailableForDecoration() {
+		List<Stone> stones = getListOfStonesWithFixPriceOfDecoration();
+		stones.forEach(stone -> System.out.println(stone.getNameOfStone() + " with price " +
+				getPriceOfStone(stone) + " $"));
+	}
+
+	public void enterPriceOfDecoration() {
+		System.out.println("Enter total price of stones for decoration you want:");
+		do {
+			if (isInputValueADouble()) {
+				if (inputValue > 0) {
+					priceOfDecoration = inputValue;
+					return;
+				} else {
+					System.out.println("Your price is less than zero");
+				}
+			}
+		} while (true);
+	}
+
+	public void printOutTotalPriceOfStonesForDecoration(double totalPrice) {
+		System.out.println("Total price of stones for decoration = "
+				+ totalPrice + "$");
+	}
+
+	public void printOutTotalWeightOfStonesForDecoration(double totalWeight) {
+		System.out.println("Total weight of stones for decoration = "
+				+ totalWeight + " carat");
+	}
+
+	public void printOutStoneWithTransparency(double refractiveIndex) {
+		listOfStonesForDecoration.stream()
+				.filter(stone -> (stone.getTransparencyOfStone().getRefractiveIndex() == refractiveIndex))
+				.forEach(stone -> System.out.println(stone.getNameOfStone() + " stone with transparency "
+						+ stone.getTransparencyOfStone()));
+	}
+
+	private void createAvailableDecorationFromStoneList(List<Stone> stoneList) {
+		double totalPriceStone = 0;
+		List<Stone> stoneListForDecoration = new ArrayList<>();
+		for (Stone stone : stoneList) {
+			if ((totalPriceStone + getPriceOfStone(stone)) <= priceOfDecoration) {
+				System.out.println("Do you want to add " + stone.getNameOfStone() + " with price "
+						+ Stone.getPriceOfStone(stone) + "$ to decoration");
+				if (doYouWantToAddStone()) {
+					totalPriceStone += getPriceOfStone(stone);
+					stoneListForDecoration.add(stone);
+				}
+			} else {
+				System.out.println("You can't add " + stone.getNameOfStone() + " stone in your decoration coz of limit");
+			}
+		}
+		listOfStonesForDecoration = stoneListForDecoration;
+	}
+
+
 	private int menuWithChoice() {
 		do {
 			System.out.println("Do we have a limit for stone's price?");
@@ -44,7 +101,7 @@ public class Decoration {
 			System.out.println("1 - yes");
 			System.out.println("2 - no");
 			System.out.println("0 - quit");
-			if (isInputADouble()) {
+			if (isInputValueADouble()) {
 				if (inputValue >= 0) {
 					return (int) inputValue;
 				} else {
@@ -54,7 +111,7 @@ public class Decoration {
 		} while (true);
 	}
 
-	private boolean isInputADouble() {
+	private boolean isInputValueADouble() {
 		do {
 			try {
 				inputValue = Double.parseDouble(scanner.next());
@@ -65,61 +122,44 @@ public class Decoration {
 		} while (true);
 	}
 
-	private void methodsForChoiceOne() {
+	private void withLimitPrice() {
 		enterPriceOfDecoration();
 		printStonesAvailableForDecoration();
-		getStoneListWithFixPriceOfDecoration();
+		createAvailableDecorationFromStoneList(getListOfStonesWithFixPriceOfDecoration());
+		printOutTotalPriceOfStonesForDecoration(getTotalPriceOfStonesForDecoration(listOfStonesForDecoration));
+		printOutTotalWeightOfStonesForDecoration(getTotalWeightOfStonesForDecoration(listOfStonesForDecoration));
+		printOutStoneWithTransparency(2.4);
 	}
 
-	private void methodsForChoiceTwo() {
-		printOutTotalPriceOfStonesForDecoration();
+	private void noLimitPrice() {
+		getStonesForDecoration();
+		printOutTotalPriceOfStonesForDecoration(getTotalPriceOfStonesForDecoration(listOfStonesForDecoration));
+		printOutTotalWeightOfStonesForDecoration(getTotalWeightOfStonesForDecoration(listOfStonesForDecoration));
+		printOutStoneWithTransparency(1.55);
 	}
-
-	public double enterPriceOfDecoration() {
-		System.out.println("Enter total price of stones for decoration you want:");
-		do {
-			if (isInputADouble()) {
-				priceOfDecoration = inputValue;
-				if (priceOfDecoration > 0) {
-					return priceOfDecoration;
-				} else {
-					System.out.println("Your price is less than zero");
-				}
-			}
-		} while (true);
-	}
-
 
 	private double getPriceOfStone(Stone stone) {
 		return stone.getPriceOfStonePerCarat() * stone.getWeightOfStoneInCarat();
 	}
 
-	private List<Stone> getStoneListWithFixPriceOfDecoration() {
+	private List<Stone> getListOfStonesWithFixPriceOfDecoration() {
 		return stoneList.stream()
 				.filter(stone -> (getPriceOfStone(stone) <= priceOfDecoration))
 				.collect(Collectors.toList());
 	}
 
-	public void printStonesAvailableForDecoration() {
-		List<Stone> stones = getStoneListWithFixPriceOfDecoration();
-		stones.forEach(stone -> System.out.println(stone.getNameOfStone() + " with price " +
-				getPriceOfStone(stone) + " $"));
-	}
-
-	private List<Stone> getStonesForDecoration() {
-		List<Stone> stonesForDecoration = new ArrayList<>();
+	private void getStonesForDecoration() {
+		listOfStonesForDecoration = new ArrayList<>();
 		for (Stone stone : this.stoneList) {
 			System.out.println("Do you want to add " + stone.getNameOfStone() + " with price "
 					+ Stone.getPriceOfStone(stone) + "$ to decoration");
 			if (doYouWantToAddStone()) {
-				stonesForDecoration.add(stone);
+				listOfStonesForDecoration.add(stone);
 			}
 		}
-		return stonesForDecoration;
 	}
 
-	private double getTotalPriceOfStonesForDecoration() {
-		List<Stone> stones = getStonesForDecoration();
+	private double getTotalPriceOfStonesForDecoration(List<Stone> stones) {
 		double totalPriceOfStones = 0;
 		for (Stone stone : stones) {
 			totalPriceOfStones += getPriceOfStone(stone);
@@ -127,8 +167,12 @@ public class Decoration {
 		return totalPriceOfStones;
 	}
 
-	public void printOutTotalPriceOfStonesForDecoration() {
-		System.out.println("Total price of stones for decoration = " + getTotalPriceOfStonesForDecoration() + "$");
+	private double getTotalWeightOfStonesForDecoration(List<Stone> stoneList) {
+		double totalWeightOfStones = 0;
+		for (Stone stone : stoneList) {
+			totalWeightOfStones += stone.getWeightOfStoneInCarat();
+		}
+		return totalWeightOfStones;
 	}
 
 	private boolean doYouWantToAddStone() {

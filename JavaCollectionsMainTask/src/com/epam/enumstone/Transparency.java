@@ -1,4 +1,4 @@
-package com.epam.enums;
+package com.epam.enumstone;
 
 public enum Transparency {
 	TRANSPARENT(2.4), TRANSLUCENT(1.9), OPAQUE(1.55);

@@ -1,9 +1,9 @@
-package com.epam.types;
+package com.epam.type;
 
-import com.epam.enums.Color;
-import com.epam.enums.SemipreciousStoneType;
-import com.epam.enums.Transparency;
-import com.epam.stones.Stone;
+import com.epam.enumstone.Color;
+import com.epam.enumstone.SemipreciousStoneType;
+import com.epam.enumstone.Transparency;
+import com.epam.stone.Stone;
 import java.util.Objects;
 
 public class SemipreciousStone extends Stone {
