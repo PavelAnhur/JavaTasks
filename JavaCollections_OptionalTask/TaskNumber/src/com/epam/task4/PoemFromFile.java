@@ -1,4 +1,4 @@
-package com.epam.poem;
+package com.epam.task4;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class Poem {
+public class PoemFromFile {
 
-	private String pathToFileWithPoem;
+	private final String pathToFileWithPoem;
 
-	public Poem(String pathToFileWithPoem) {
+	public PoemFromFile(String pathToFileWithPoem) {
 		this.pathToFileWithPoem = pathToFileWithPoem;
 	}
 
