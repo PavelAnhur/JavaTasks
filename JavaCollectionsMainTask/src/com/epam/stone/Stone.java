@@ -1,5 +1,8 @@
 package com.epam.stone;
 
+import com.epam.feature.Color;
+import com.epam.feature.Transparency;
+
 import java.util.Objects;
 
 public abstract class Stone {

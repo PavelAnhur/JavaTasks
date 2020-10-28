@@ -1,12 +1,12 @@
 package com.epam.run;
 
-import com.epam.stone.Color;
+import com.epam.feature.Color;
 import com.epam.type.PreciousStoneType;
 import com.epam.type.SemipreciousStoneType;
-import com.epam.stone.Transparency;
+import com.epam.feature.Transparency;
 import com.epam.stone.Stone;
-import com.epam.feature.Decoration;
-import com.epam.feature.Jewelry;
+import com.epam.necklace.Decoration;
+import com.epam.necklace.Jewelry;
 import com.epam.type.PreciousStone;
 import com.epam.type.SemipreciousStone;
 

@@ -1,7 +1,7 @@
 package com.epam.type;
 
-import com.epam.stone.Color;
-import com.epam.stone.Transparency;
+import com.epam.feature.Color;
+import com.epam.feature.Transparency;
 import com.epam.stone.Stone;
 import java.util.Objects;
 

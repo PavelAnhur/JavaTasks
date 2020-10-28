@@ -1,4 +1,4 @@
-package com.epam.feature;
+package com.epam.necklace;
 
 import com.epam.stone.Stone;
 import com.epam.type.PreciousStone;
