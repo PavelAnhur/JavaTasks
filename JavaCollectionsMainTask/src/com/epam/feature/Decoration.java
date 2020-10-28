@@ -1,7 +1,6 @@
-package com.epam.store;
+package com.epam.feature;
 
 import com.epam.stone.Stone;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -25,13 +24,13 @@ public class Decoration {
 			int selection = menuWithChoice();
 			if (selection == 1) {
 				withLimitPrice();
-				break;
+				return;
 			} else if (selection == 2) {
 				noLimitPrice();
-				break;
+				return;
 			} else if (selection == 0) {
 				System.out.println("See you next time!");
-				break;
+				return;
 			} else {
 				System.out.println("Wrong choice! try one more time");
 			}

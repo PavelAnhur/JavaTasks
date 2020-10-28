@@ -1,12 +1,12 @@
-package com.epam;
+package com.epam.run;
 
-import com.epam.enumstone.Color;
-import com.epam.enumstone.PreciousStoneType;
-import com.epam.enumstone.SemipreciousStoneType;
-import com.epam.enumstone.Transparency;
+import com.epam.stone.Color;
+import com.epam.type.PreciousStoneType;
+import com.epam.type.SemipreciousStoneType;
+import com.epam.stone.Transparency;
 import com.epam.stone.Stone;
-import com.epam.store.Decoration;
-import com.epam.store.Jewelry;
+import com.epam.feature.Decoration;
+import com.epam.feature.Jewelry;
 import com.epam.type.PreciousStone;
 import com.epam.type.SemipreciousStone;
 

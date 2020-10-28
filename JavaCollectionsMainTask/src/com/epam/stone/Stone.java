@@ -1,7 +1,5 @@
 package com.epam.stone;
 
-import com.epam.enumstone.Color;
-import com.epam.enumstone.Transparency;
 import java.util.Objects;
 
 public abstract class Stone {

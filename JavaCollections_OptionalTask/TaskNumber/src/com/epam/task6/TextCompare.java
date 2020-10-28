@@ -7,7 +7,6 @@ import java.util.*;
 public class TextCompare{
 
 	private final String pathToFile;
-	private List<String> textFromFile;
 
 
 	public TextCompare(String pathToFile) {
@@ -16,10 +15,11 @@ public class TextCompare{
 
 	private List<String> readFromFile() throws IOException {
 		FileReader fileReader = new FileReader(pathToFile);
+		List<String> textFromFile;
 		try (Scanner scanner = new Scanner(fileReader)) {
 			textFromFile = new ArrayList<>();
 			while (scanner.hasNext()) {
-				textFromFile.add(scanner.nextLine());
+				textFromFile.add(scanner.next());
 			}
 			fileReader.close();
 		}
@@ -27,7 +27,7 @@ public class TextCompare{
 	}
 
 	private List<String> sortTextFromFileWithSortMethod() throws IOException {
-		textFromFile = readFromFile();
+		List<String> textFromFile = readFromFile();
 		Collections.sort(textFromFile);
 		return textFromFile;
 	}

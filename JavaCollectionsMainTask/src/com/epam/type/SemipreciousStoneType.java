@@ -1,4 +1,4 @@
-package com.epam.enumstone;
+package com.epam.type;
 
 public enum SemipreciousStoneType {
 	PEARL, QUARTZ, JASPER, MALACHITE, LAZULI

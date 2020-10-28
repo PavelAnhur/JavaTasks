@@ -1,8 +1,7 @@
 package com.epam.type;
 
-import com.epam.enumstone.Color;
-import com.epam.enumstone.SemipreciousStoneType;
-import com.epam.enumstone.Transparency;
+import com.epam.stone.Color;
+import com.epam.stone.Transparency;
 import com.epam.stone.Stone;
 import java.util.Objects;
 
