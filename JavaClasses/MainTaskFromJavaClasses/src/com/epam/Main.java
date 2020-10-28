@@ -1,8 +1,11 @@
 package com.epam;
 
+import com.epam.student.StudentCourseComparator;
 import com.epam.university.Faculty;
 import com.epam.student.Student;
 import com.epam.student.StudentsList;
+
+import java.util.Comparator;
 
 public class Main {
 
@@ -117,11 +120,15 @@ public class Main {
 		studentsList.addStudentToList(studentNanoke);
 
 		studentsList.printOnConsoleStudentsWithSameFaculty(Faculty.EF);
-		System.out.println("--------------------");
+		String string = "--------------------";
+		System.out.println(string);
 		studentsList.printOnConsoleStudentsWithTheSameCourseAndFaculty();
-		System.out.println("--------------------");
+		System.out.println(string);
 		studentsList.printOnConsoleStudentsWithDateOfBirthLessThenGiven(1986);
-		System.out.println("--------------------");
+		System.out.println(string);
 		studentsList.printOnConsoleStudentsFromSameGroup("032MF");
+		Comparator courseComparator = new StudentCourseComparator();
+		System.out.println("Sorted student by course");
+		studentsList.printOurStudentsSortedToCourse();
 	}
 }

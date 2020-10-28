@@ -1,7 +1,6 @@
 package com.epam.student;
 
 import com.epam.university.Faculty;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -75,6 +74,18 @@ public class StudentsList {
 			return Integer.parseInt(separateNumbers[2]);
 		} else {
 			return -1;
+		}
+	}
+
+	private List<Student> sortStudentsToCourse(List<Student> students) {
+		students.sort(new StudentCourseComparator());
+		return students;
+	}
+
+	public void printOurStudentsSortedToCourse() {
+		List<Student> students = sortStudentsToCourse(allStudents);
+		for (Student student : students) {
+			System.out.println(student.toString());
 		}
 	}
 }
