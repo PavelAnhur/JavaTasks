@@ -1,5 +1,6 @@
 package com.epam.task6;
 
+import com.epam.util.FileReader;
 import java.io.IOException;
 
 public class RunTaskSix {
@@ -9,7 +10,6 @@ public class RunTaskSix {
 		String pathToFile = "C:\\Users\\Iam\\Documents\\JavaTasks\\JavaCollections_OptionalTask" +
 				"\\TaskNumber\\fileForSixthTask.txt";
 
-		TextCompare textCompare = new TextCompare(pathToFile);
-		textCompare.printOutSortedStringsFromFile();
+		new TextCompare(new FileReader(pathToFile).getTextFromFileAsList()).printOutSortedStringsFromFile();
 	}
 }
