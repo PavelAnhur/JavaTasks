@@ -1,6 +1,6 @@
 package com.epam.task4;
 
-import com.epam.util.FileReader;
+import com.epam.util.ReaderFromFile;
 
 import java.io.IOException;
 
@@ -11,6 +11,6 @@ public class RunTaskFour {
 		String pathToPoem = "C:\\Users\\Iam\\Documents\\JavaTasks\\" +
 				"JavaCollections_OptionalTask\\TaskNumber\\poem.txt";
 
-		new PoemFromFile(new FileReader(pathToPoem).getTextFromFileAsList()).printOutSortedText();
+		new PoemFromFile(new ReaderFromFile(pathToPoem).getTextFromFileAsList()).printOutSortedText();
 	}
 }

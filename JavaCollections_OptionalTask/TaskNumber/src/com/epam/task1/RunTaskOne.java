@@ -1,6 +1,6 @@
 package com.epam.task1;
 
-import com.epam.util.FileReader;
+import com.epam.util.ReaderFromFile;
 
 import java.io.IOException;
 
@@ -13,9 +13,9 @@ public class RunTaskOne {
 		String pathToSecondFile = "C:\\Users\\Iam\\Documents\\JavaTasks\\" +
 				"JavaCollections_OptionalTask\\TaskNumber\\revertSong.txt";
 
-		FileReader fileReader = new FileReader(pathToFirstFile);
-		WriteFile writeFile = new WriteFile(fileReader.getTextFromFileAsStack(), pathToSecondFile);
-		writeFile.printOutTextFromStack();
-		writeFile.writeTextOnFile(fileReader.getTextFromFileAsStack());
+		ReaderFromFile readerFromFile = new ReaderFromFile(pathToFirstFile);
+		WriterToFile writerToFile = new WriterToFile(readerFromFile.getTextFromFileAsStack(), pathToSecondFile);
+		writerToFile.printOutTextFromStack();
+		writerToFile.writeTextOnFile(readerFromFile.getTextFromFileAsStack());
 	}
 }

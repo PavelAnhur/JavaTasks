@@ -4,17 +4,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Stack;
 
-public class WriteFile {
+public class WriterToFile {
 
 	private final Stack<String> textFromFile;
 	private final String pathToWriteFile;
 
-	public WriteFile(Stack<String> textFromFile, String pathToWriteFile) {
+	public WriterToFile(Stack<String> textFromFile, String pathToWriteFile) {
 		this.textFromFile = textFromFile;
 		this.pathToWriteFile = pathToWriteFile;
 	}
 
-	public void printOutTextFromStack() throws IOException {
+	public void printOutTextFromStack() {
 		while (!textFromFile.isEmpty()) {
 			System.out.println(textFromFile.pop());
 		}

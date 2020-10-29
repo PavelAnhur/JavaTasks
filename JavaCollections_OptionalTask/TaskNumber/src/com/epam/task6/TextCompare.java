@@ -1,9 +1,9 @@
 package com.epam.task6;
 
-import java.io.IOException;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
 
-public class TextCompare{
+public class TextCompare {
 
 	private final List<String> textFromFile;
 
@@ -11,12 +11,12 @@ public class TextCompare{
 		this.textFromFile = textFromFile;
 	}
 
-	private List<String> sortTextFromFileWithSortMethod() throws IOException {
+	private List<String> sortTextFromFileWithSortMethod() {
 		Collections.sort(textFromFile);
 		return textFromFile;
 	}
 
-	public void printOutSortedStringsFromFile() throws IOException {
+	public void printOutSortedStringsFromFile() {
 		System.out.println(sortTextFromFileWithSortMethod().toString());
 	}
 }
