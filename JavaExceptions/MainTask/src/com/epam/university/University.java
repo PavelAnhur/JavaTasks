@@ -1,6 +1,7 @@
 package com.epam.university;
 
 import com.epam.exception.NoFacultyException;
+import com.epam.exception.NoGroupException;
 import com.epam.exception.NoLessonException;
 import com.epam.exception.NoStudentException;
 
@@ -11,13 +12,13 @@ public class University {
 	private final String nameOfUniversity;
 	private Map<String, Faculty> faculties;
 
-	public University(String nameOfUniversity) {
-		this.nameOfUniversity = nameOfUniversity;
-	}
-
 	public University(String nameOfUniversity, Map<String, Faculty> faculties) {
 		this.nameOfUniversity = nameOfUniversity;
 		this.faculties = faculties;
+	}
+
+	public String getNameOfUniversity() {
+		return nameOfUniversity;
 	}
 
 	public void addFaculty(String nameOfFaculty, Faculty faculty) {
@@ -25,26 +26,22 @@ public class University {
 		faculties.put(nameOfFaculty, faculty);
 	}
 
-	public void getFaculties() throws NoFacultyException {
+	public Map<String, Faculty> getFaculties() throws NoFacultyException {
 		if (faculties == null) {
-			throw new NoFacultyException();
-		}
+			throw new NoFacultyException("No faculties in " + getNameOfUniversity());
+		} else return faculties;
 	}
 
 	public void printOutAverageGradeForFacultyGroupAndLesson(String facultyName, int numberOfGroup, String nameOfLesson)
-			throws NoStudentException, NoLessonException {
-		Faculty faculty = faculties.get(facultyName);
-		Group group = faculty.getGroupForAverageGrade(numberOfGroup);
-		List<Student> studentsFromGroup = new ArrayList<>(group.getStudentsInGroup().values());
+			throws NoStudentException, NoLessonException, NoGroupException {
 		double averageGrade = 0;
-		for (Student student : studentsFromGroup) {
+		Map<String, Student> students = faculties.get(facultyName).getGroupsOfStudent().get(numberOfGroup).getStudentsInGroup();
+		for (Student student : students.values()) {
 			if (student.getLessons().containsKey(nameOfLesson)) {
-				if (student.getLessons().get(nameOfLesson) != 0) {
-					if (averageGrade != 0) {
-						averageGrade = (averageGrade + student.getLessons().get(nameOfLesson)) / 2;
-					} else {
-						averageGrade = student.getLessons().get(nameOfLesson);
-					}
+				if (averageGrade != 0) {
+					averageGrade = (averageGrade + student.getLessons().get(nameOfLesson)) / 2;
+				} else {
+					averageGrade = student.getLessons().get(nameOfLesson);
 				}
 			}
 		}

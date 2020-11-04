@@ -19,7 +19,7 @@ public class Faculty {
 
 	public void addGroupToFaculty(Integer numberOfGroup, Group group) throws NoStudentException {
 		if (group == null) {
-			throw new NoStudentException();
+			throw new NoStudentException("No students in group number " + numberOfGroup);
 		}
 		groupsOfStudent = new HashMap<>();
 		groupsOfStudent.put(numberOfGroup, group);
@@ -34,10 +34,6 @@ public class Faculty {
 			throw new NoGroupException("No groups at " + getNameOfFaculty());
 		}
 		return groupsOfStudent;
-	}
-
-	public Group getGroupForAverageGrade(int numberOfGroup) {
-		return groupsOfStudent.getOrDefault(numberOfGroup, null);
 	}
 
 	@Override

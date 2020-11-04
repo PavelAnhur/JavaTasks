@@ -2,13 +2,14 @@ package com.epam.university;
 
 import com.epam.exception.NoStudentException;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class Group {
 
 	private final int numberOfGroup;
-	private final Map<String, Student> studentsInGroup;
+	private Map<String, Student> studentsInGroup;
 
 	public Group(int numberOfGroup, Map<String, Student> studentsInGroup) {
 		this.numberOfGroup = numberOfGroup;
@@ -16,12 +17,17 @@ public class Group {
 	}
 
 	public void addStudentToGroup(String lastName, Student student) {
+		studentsInGroup = new HashMap<>();
 		studentsInGroup.put(lastName, student);
+	}
+
+	public int getNumberOfGroup() {
+		return numberOfGroup;
 	}
 
 	public Map<String, Student> getStudentsInGroup() throws NoStudentException {
 		if (studentsInGroup == null) {
-			throw new NoStudentException();
+			throw new NoStudentException("No students in group number " + getNumberOfGroup());
 		}
 		return studentsInGroup;
 	}
