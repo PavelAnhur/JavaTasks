@@ -1,57 +1,46 @@
 package com.epam.journal;
 
+import com.epam.exception.GradeException;
+import com.epam.exception.NoLessonException;
 import com.epam.university.Student;
 
-import java.util.Objects;
+import java.util.List;
 
 public class Journal {
 
-	private Student student;
-	private String nameOfLesson;
-	private double grade;
+	private final List<Student> studentList;
 
-	public Journal(Student student, String nameOfLesson, double grade) {
-		this.student = student;
-		this.nameOfLesson = nameOfLesson;
-		this.grade = grade;
+	public Journal(List<Student> studentList) {
+		this.studentList = studentList;
 	}
 
-	public Student getStudent() {
-		return student;
+	public void printOutGradesForLesson(String lesson) throws NoLessonException, GradeException {
+		System.out.println(lesson + " lesson");
+		for (Student student : studentList) {
+			if (student.getLessons().containsKey(lesson)) {
+				if (student.getLessons().get(lesson) >= 0 && student.getLessons().get(lesson) <= 10) {
+					System.out.println("Student " + student.getLastName() + ", grade " + student.getLessons().get(lesson));
+				} else throw new GradeException();
+			}
+		}
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public void printOutAverageGradeForAllLessonToStudent() {
+		System.out.println("Average grades for all lessons");
+		for (Student student : studentList) {
+			System.out.println("Student " + student.getLastName() + " with average grade -> " + student.getAverageGrade());
+		}
 	}
 
-	public String getNameOfLesson() {
-		return nameOfLesson;
-	}
-
-	public void setNameOfLesson(String nameOfLesson) {
-		this.nameOfLesson = nameOfLesson;
-	}
-
-	public double getGrade() {
-		return grade;
-	}
-
-	public void setGrade(double grade) {
-		this.grade = grade;
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		Journal journal = (Journal) o;
-		return Double.compare(journal.grade, grade) == 0 &&
-				Objects.equals(student, journal.student) &&
-				Objects.equals(nameOfLesson, journal.nameOfLesson);
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(student, nameOfLesson, grade);
+	public void printOutAverageGradeForAllUniversity() {
+		double averageGrade = 0;
+		for (Student student : studentList) {
+			if (student.getAverageGrade() != 0) {
+				if (averageGrade != 0) {
+					averageGrade = (averageGrade + student.getAverageGrade()) / 2;
+				} else averageGrade = student.getAverageGrade();
+			}
+		}
+		System.out.println("Average grade for all university is: " + averageGrade);
 	}
 }
