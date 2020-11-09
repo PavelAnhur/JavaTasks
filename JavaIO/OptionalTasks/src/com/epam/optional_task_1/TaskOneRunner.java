@@ -12,9 +12,9 @@ public class TaskOneRunner {
 		FileDirCreator fileDirCreator = new FileDirCreator();
 		fileDirCreator.createNewDirectoryForFile("Data/");
 		fileDirCreator.createNewFile(filePathForReading);
-		DataForFile data = new DataForFile(10);
-		new WriterToFile(data.getIntegers(), filePathForReading).writeDataInFile();
-		new WriterToFile(data.getSortedListOfIntegers(new ReaderFromFile(filePathForReading).getTextFromFileAsListOfIntegers()),filePathForWriting)
-                .writeDataInFile();
+		DataForFile integerNumbers = new DataForFile(10);
+		new WriterToFile(filePathForReading).writeNumbersInFile(integerNumbers.getIntegers());
+		new WriterToFile(filePathForWriting).writeNumbersInFile(integerNumbers.getSortedListOfIntegers(new ReaderFromFile(filePathForReading)
+				.getTextFromFileAsListOfIntegers()));
 	}
 }

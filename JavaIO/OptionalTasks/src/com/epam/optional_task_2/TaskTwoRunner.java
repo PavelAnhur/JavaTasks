@@ -6,7 +6,7 @@ public class TaskTwoRunner {
 
 	public static void main(String[] args) {
 
-		ReaderFromFile reader = new ReaderFromFile("JavaFileForReading/file.java");
-		reader.getTextFromFileAsStrings();
+		new TextReplacer(new ReaderFromFile("JavaFileForReading/file.java")
+				.getTextFromFileAsListOfLines()).printOutListWithReplacedWords();
 	}
 }

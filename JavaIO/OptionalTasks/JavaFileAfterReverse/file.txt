@@ -1,0 +1,31 @@
+;atad.1_ksat_lanoitpo.mape.moc egakcap
+
+;tsiLyarrA.litu.avaj tropmi
+;snoitcelloC.litu.avaj tropmi
+;tsiL.litu.avaj tropmi
+
+{ eliFroFataD ssalc cilbup
+
+;tsiLnIsregetnIfOrebmun tni lanif etavirp	
+
+{ )tsiLnIsregetnIfOrebmun tni(eliFroFataD cilbup	
+;tsiLnIsregetnIfOrebmun = tsiLnIsregetnIfOrebmun.siht		
+}	
+
+{ )(sregetnIteg >regetnI<tsiL cilbup	
+;)(><tsiLyarrA wen = srebmuNregetni >regetnI<tsiL		
+{ )++i ;tsiLnIsregetnIfOrebmun < i ;0 = i tni( rof		
+;)001 - ))1 + 002( * )(modnar.htaM( )tni((dda.srebmuNregetni			
+;))i(teg.srebmuNregetni + " tnemele " + )1 + i((nltnirp.tuo.metsyS			
+}		
+;srebmuNregetni nruter		
+}	
+
+{ )sregetni >regetnI<tsiL(sregetnIfOtsiLdetroSteg >regetnI<tsiL cilbup	
+;)sregetni(tros.snoitcelloC		
+{ )sregetni : rebmun tni(rof		
+;)" " + rebmun(tnirp.tuo.metsyS			
+}		
+;sregetni nruter		
+}	
+}
