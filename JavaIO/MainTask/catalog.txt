@@ -1,14 +1,14 @@
 ├--Data/
 | ├--Evanescence/
 | | ├--2003 - Fallen/
-| | | ├--Bring-me-to-life.mp3
-| | | ├--Going Under.mp3
-| | | ├--Lithium.mp3
-| | | ├--My Immortal.mp3
+| | |   Bring-me-to-life.mp3
+| | |   Going Under.mp3
+| | |   Lithium.mp3
+| | |   My Immortal.mp3
 | | ├--2006 - The Open Door/
-| | | ├--Call Me When You're Sober.mp3
-| | | ├--Good Enough.mp3
-| | | ├--Sweet Sacrifice.mp3
+| | |   Call Me When You're Sober.mp3
+| | |   Good Enough.mp3
+| | |   Sweet Sacrifice.mp3
 | | ├--2011 - Evanescence/
-| | | ├--My Heart Is Broken.mp3
-| | | ├--What You Want.mp3
+| | |   My Heart Is Broken.mp3
+| | |   What You Want.mp3
