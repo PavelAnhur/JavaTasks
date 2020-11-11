@@ -3,11 +3,11 @@ package com.epam.viewpattern;
 import java.io.File;
 import java.util.Objects;
 
-public class TreeViewFileDir {
+public class FileDirViewer {
 
 	private final File parentDirectory;
 
-	public TreeViewFileDir(File parentDirectory) {
+	public FileDirViewer(File parentDirectory) {
 		this.parentDirectory = parentDirectory;
 	}
 

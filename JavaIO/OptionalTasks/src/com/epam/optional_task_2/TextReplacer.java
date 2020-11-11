@@ -20,6 +20,7 @@ public class TextReplacer {
 
 	private List<String> getListOfLinesWithReplacedWords(List<String> listOfLines) {
 		List<String> textAfterReplace = new ArrayList<>();
+		System.out.println("***********");
 		for (String line : listOfLines) {
 			textAfterReplace.add(line.replace("public", "private"));
 		}

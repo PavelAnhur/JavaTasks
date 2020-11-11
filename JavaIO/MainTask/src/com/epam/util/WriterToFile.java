@@ -14,7 +14,7 @@ public class WriterToFile {
 	}
 
 	public void writeTextInFile() {
-		try (FileWriter fileWriter = new FileWriter(pathToWriteFile)) {
+		try (FileWriter fileWriter = new FileWriter(pathToWriteFile, true)) {
 			fileWriter.write(textForWriting);
 		} catch (IOException e) {
 			e.getStackTrace();

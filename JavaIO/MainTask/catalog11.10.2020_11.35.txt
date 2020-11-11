@@ -1,0 +1,12 @@
+├--src/
+| ├--com/
+| | ├--epam/
+| | | ├--element/
+| | | |   ElementCounter.java
+| | |   Main.java
+| | | ├--util/
+| | | |   ConsoleReader.java
+| | | |   ReaderFromFile.java
+| | | |   WriterToFile.java
+| | | ├--viewpattern/
+| | | |   TreeViewFileDir.java

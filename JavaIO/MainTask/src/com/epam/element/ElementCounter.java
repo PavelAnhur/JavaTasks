@@ -12,15 +12,15 @@ public class ElementCounter {
 		this.listOfStrings = listOfStrings;
 	}
 
-	public void printOutCounterDirAndFiles() {
+	public void printOutNumberDirAndFiles() {
 		System.out.println("There are " + directoryCounter + " folders and " + filesCounter + " files");
 	}
 
-	public void printOutAverageValueOfFilesInFolders() {
+	public void printOutAverageNumberOfFilesInFolders() {
 		System.out.println("Average value of files in folder equal " + filesCounter / (directoryCounter - 1));
 	}
 
-	public void printOutAverageLengthForFile() {
+	public void printOutAverageLengthForFileName() {
 		System.out.println("Average length for files equals " + (double) getLengthOfAllFileNames(listOfStrings) / filesCounter);
 	}
 
