@@ -18,9 +18,6 @@ public class Main {
 		Semaphore pierNumber = new Semaphore(2);
 		Thread.sleep(100);
 
-		for(Ship ship : port.getShipsInPort()){
-			System.out.println(ship.toString());
-		}
 		System.out.println(" ");
 
 		ShipThread shipOne = new ShipThread(port.getShipsInPort().take(), pierNumber);

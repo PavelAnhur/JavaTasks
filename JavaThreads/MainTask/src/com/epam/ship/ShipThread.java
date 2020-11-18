@@ -22,11 +22,12 @@ public class ShipThread extends Thread {
 			Thread.sleep(500);
 			if (ship.getNumberOfContainerOnShip() > 0) {
 				deductContainerFromShip();
+			} else if (ship.getNumberOfContainerOnShip() == 0){
+				addContainerOnShip();
 			} else {
 				addContainerOnShip();
 			}
-			System.out.println("Ship number " + ship.getShipNumber() + " leaving our port");
-			System.err.println("*****************");
+			System.err.println("Ship number " + ship.getShipNumber() + " leaving our port");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -35,7 +36,6 @@ public class ShipThread extends Thread {
 	private synchronized void addContainerOnShip() {
 		try {
 			pierNumber.acquire();
-			System.out.println("Loading containers on ship number " + ship.getShipNumber());
 			int containerNumber = ship.getNumberOfContainerOnShip();
 			while (containerNumber < ship.getShipSize().getContainerCount()) {
 				if (numberContainerInPort == 0) {
@@ -43,9 +43,8 @@ public class ShipThread extends Thread {
 				}
 				numberContainerInPort--;
 				containerNumber++;
-				System.out.println("Container " + containerNumber + " added on ship number " + ship.getShipNumber() + "\n " +
-						"Number containers in port " + numberContainerInPort + "\n" +
-						"------------------");
+				System.out.println("<<<Container " + containerNumber + " added on ship number " + ship.getShipNumber() + ". " +
+						"Number containers in port = " + numberContainerInPort + ">>>");
 				Thread.sleep(100);
 			}
 			pierNumber.release();
@@ -57,16 +56,14 @@ public class ShipThread extends Thread {
 	private synchronized void deductContainerFromShip() {
 		try {
 			pierNumber.acquire();
-			System.out.println("Unloading containers from ship number " + ship.getShipNumber());
 			int containerNumber = ship.getNumberOfContainerOnShip();
 			while (containerNumber > 0) {
 				if (numberContainerInPort == Port.MAX_CONTAINER_VOLUME_FOR_PORT) {
 					addContainerOnShip();
 				}
 				numberContainerInPort++;
-				System.out.println("Container " + containerNumber + " unload from ship number " + ship.getShipNumber() + "\n " +
-						"Number containers in port " + numberContainerInPort + "\n" +
-						"~~~~~~~~~~~~~~~~~~~~~");
+				System.out.println("***Container " + containerNumber + " unload from ship number " + ship.getShipNumber() + ". " +
+						"Number containers in port = " + numberContainerInPort + "***");
 				containerNumber--;
 				Thread.sleep(100);
 			}

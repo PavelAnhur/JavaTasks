@@ -9,7 +9,7 @@ import java.util.concurrent.BlockingQueue;
 public class Port {
 
 	private final BlockingQueue<Ship> shipsInPort;
-	public static final int MAX_CONTAINER_VOLUME_FOR_PORT = 20;
+	public static final int MAX_CONTAINER_VOLUME_FOR_PORT = 25;
 	private int numberShipInPort = 0;
 
 	public Port(int shipCount) {
@@ -20,9 +20,8 @@ public class Port {
 		shipsInPort.add(ship);
 		numberShipInPort++;
 		System.out.println("The ship arrived in the port: " + Thread.currentThread().getName() + " \n" +
-				" current number of ships in port " + shipsInPort.size() + " \n Ship number: " + ship.getShipNumber()
-				+ " with carrying capacity: " + ship.getShipSize() + " and " + ship.getNumberOfContainerOnShip() +
-				" containers on a board \n");
+				"Ship number: " + ship.getShipNumber()+ " with carrying capacity: "
+				+ ship.getShipSize() + " and " + ship.getNumberOfContainerOnShip() + " containers on a board \n");
 	}
 
 	public BlockingQueue<Ship> getShipsInPort() {
