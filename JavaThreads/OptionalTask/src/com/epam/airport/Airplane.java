@@ -1,6 +1,7 @@
 package com.epam.airport;
 
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 public class Airplane extends Thread{
 
@@ -23,7 +24,7 @@ public class Airplane extends Thread{
 			System.out.println(airplane + Thread.currentThread().getName() + " the plane took off");
 			Thread.sleep(1000);
 			System.out.println(airplane + Thread.currentThread().getName() + " flying away");
-			Thread.sleep(1000);
+			TimeUnit.SECONDS.sleep(1);
 			runwayNumber.release();
 		} catch (InterruptedException e) {
 			e.printStackTrace();

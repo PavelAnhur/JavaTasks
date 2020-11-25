@@ -3,7 +3,6 @@ package com.epam;
 import com.epam.port.Port;
 import com.epam.ship.Ship;
 import com.epam.ship.ShipGenerator;
-import com.epam.ship.ShipThread;
 
 import java.util.concurrent.Semaphore;
 
@@ -11,34 +10,34 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 
+		Semaphore pierNumber = new Semaphore(2);
 		int shipCount = 10;
-		Port port = new Port(shipCount);
+		Port port = new Port(shipCount, pierNumber);
 		ShipGenerator shipGenerator = new ShipGenerator(port, shipCount);
 		shipGenerator.start();
-		Semaphore pierNumber = new Semaphore(2);
 		Thread.sleep(100);
 
 		System.out.println(" ");
 
-		ShipThread shipOne = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipOne = new Ship();
 		shipOne.start();
-		ShipThread shipTwo = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipTwo = new Ship();
 		shipTwo.start();
-		ShipThread shipThree = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipThree = new Ship();
 		shipThree.start();
-		ShipThread shipFour = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipFour = new Ship();
 		shipFour.start();
-		ShipThread shipFive = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipFive = new Ship();
 		shipFive.start();
-		ShipThread shipSix = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipSix = new Ship();
 		shipSix.start();
-		ShipThread shipSeven = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipSeven = new Ship();
 		shipSeven.start();
-		ShipThread shipEight = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipEight = new Ship();
 		shipEight.start();
-		ShipThread shipNine = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipNine = new Ship();
 		shipNine.start();
-		ShipThread shipTen = new ShipThread(port.getShipsInPort().take(), pierNumber);
+		Ship shipTen = new Ship();
 		shipTen.start();
 	}
 }
