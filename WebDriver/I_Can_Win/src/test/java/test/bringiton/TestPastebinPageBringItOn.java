@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import page.PastebinPage;
-import page.PastebinPageResult;
+import page.PastebinResultPage;
 import webdriver.WebDriverSetup;
 
 import java.util.concurrent.TimeUnit;
@@ -16,7 +16,7 @@ public class TestPastebinPageBringItOn {
 
 	private WebDriver testDriver;
 	private PastebinPage pastebinPage;
-	private PastebinPageResult pastebinPageResult;
+	private PastebinResultPage pastebinResultPage;
 
 	@Before
 	public void setupClass() {
@@ -25,7 +25,7 @@ public class TestPastebinPageBringItOn {
 		testDriver.get("https://pastebin.com");
 		testDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		testDriver.manage().window().maximize();
-		pastebinPageResult = new PastebinPageResult(testDriver);
+		pastebinResultPage = new PastebinResultPage(testDriver);
 	}
 
 	@Test
@@ -44,9 +44,9 @@ public class TestPastebinPageBringItOn {
 		pastebinPage.pasteNameInput.sendKeys("how to gain dominance among developers");
 		pastebinPage.createNewPasteButton.click();
 
-		Assert.assertEquals("how to gain dominance among developers", pastebinPageResult.headingInfoPastebinPage.getText());
-		Assert.assertTrue(pastebinPageResult.bashSyntax.isDisplayed());
-		Assert.assertEquals(codeInTextArea, pastebinPageResult.getCodeFromTextArea());
+		Assert.assertEquals("how to gain dominance among developers", pastebinResultPage.headingInfoPastebinPage.getText());
+		Assert.assertTrue(pastebinResultPage.bashSyntax.isDisplayed());
+		Assert.assertEquals(codeInTextArea, pastebinResultPage.getCodeFromTextArea());
 	}
 
 	@After

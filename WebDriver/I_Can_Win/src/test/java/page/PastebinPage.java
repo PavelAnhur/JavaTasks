@@ -28,10 +28,6 @@ public class PastebinPage {
 	@FindBy(id = "postform-name")
 	public WebElement pasteNameInput;
 
-	public String getNameInput() {
-		return pasteNameInput.getText();
-	}
-
 	@FindBy(css = "button.btn")
 	public WebElement createNewPasteButton;
 

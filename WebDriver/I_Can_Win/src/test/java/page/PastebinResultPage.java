@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PastebinPageResult {
+public class PastebinResultPage {
 
 	@FindBy (xpath = "//div[@class='info-top']")
 	public WebElement headingInfoPastebinPage;
@@ -20,7 +20,7 @@ public class PastebinPageResult {
 		return inputTextArea.getText();
 	}
 
-	public PastebinPageResult(WebDriver driver) {
+	public PastebinResultPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 }

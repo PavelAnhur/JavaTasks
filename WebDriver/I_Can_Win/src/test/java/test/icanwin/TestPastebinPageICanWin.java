@@ -9,7 +9,7 @@ import webdriver.WebDriverSetup;
 
 import java.util.concurrent.TimeUnit;
 
-public class PastebinPageTestICanWin {
+public class TestPastebinPageICanWin {
 
 	private WebDriver testDriver;
 	private PastebinPage pastebinPage;
