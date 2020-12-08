@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class GoogleCloudResultPage {
 
-	@FindBy (css = "a[data-ctorig$=calculator]")
+	@FindBy(css = "a[data-ctorig$=calculator]")
 	public WebElement searchResult;
 
 	public GoogleCloudResultPage(WebDriver driver) {
