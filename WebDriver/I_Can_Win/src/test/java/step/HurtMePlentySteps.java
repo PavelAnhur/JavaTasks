@@ -6,6 +6,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import page.GoogleCloudPage;
 import page.GoogleCloudPricingCalculatorPage;
 import page.GoogleCloudResultPage;
+import page.EstimateComputeEnginePage;
 
 public class HurtMePlentySteps {
 
@@ -13,6 +14,7 @@ public class HurtMePlentySteps {
 	private GoogleCloudPage googleCloudPage;
 	private GoogleCloudPricingCalculatorPage googleCloudPricingCalculatorPage;
 	private final WebDriverWait wait;
+	private EstimateComputeEnginePage estimatePage;
 
 
 	public HurtMePlentySteps(WebDriver webDriver) {
@@ -91,6 +93,34 @@ public class HurtMePlentySteps {
 
 	public void pressAddToEstimate() {
 		googleCloudPricingCalculatorPage.addToEstimateButton.click();
+	}
+
+	public void openEstimateComputeEngine() {
+		estimatePage = new EstimateComputeEnginePage(webDriver);
+	}
+
+	public String getTextFromVMClassField() {
+		return estimatePage.vMClassFieldInCompueEngineForm.getText();
+	}
+
+	public String getTextFromInstanceTypeField() {
+		return estimatePage.instanceTypeFieldInComputeEngineForm.getText();
+	}
+
+	public String getTextFromRegionField() {
+		return estimatePage.regionFieldInComputeEngineForm.getText();
+	}
+
+	public String getTextFromAvailableSSDField() {
+		return estimatePage.availableSSDFieldInComputeEngineForm.getText();
+	}
+
+	public String getTextFromCommitmentField() {
+		return estimatePage.commitmentFieldInComputeEngineForm.getText();
+	}
+
+	public String getTotalEstimatedCost() {
+		return estimatePage.totalCostFieldInComputeEngineForm.getText();
 	}
 
 	public void quitDriver() {
