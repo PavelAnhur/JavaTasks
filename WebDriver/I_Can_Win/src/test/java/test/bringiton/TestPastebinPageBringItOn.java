@@ -6,8 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import page.PastebinPage;
-import page.PastebinResultPage;
+import page.pastebin.PastebinPage;
+import page.pastebin.PastebinResultPage;
 import webdriver.WebDriverSetup;
 
 import java.util.concurrent.TimeUnit;

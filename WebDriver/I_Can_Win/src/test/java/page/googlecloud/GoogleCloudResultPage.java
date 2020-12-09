@@ -1,16 +1,16 @@
-package page;
+package page.googlecloud;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class GoogleCloudPage {
+public class GoogleCloudResultPage {
 
-	@FindBy(xpath = "//input[@name='q']")
-	public WebElement searchField;
+	@FindBy(css = "a[data-ctorig$=calculator]")
+	public WebElement searchResult;
 
-	public GoogleCloudPage(WebDriver driver) {
+	public GoogleCloudResultPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 }

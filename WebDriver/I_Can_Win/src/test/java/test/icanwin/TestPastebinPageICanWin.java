@@ -4,7 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import page.PastebinPage;
+import page.pastebin.PastebinPage;
 import webdriver.WebDriverSetup;
 
 import java.util.concurrent.TimeUnit;

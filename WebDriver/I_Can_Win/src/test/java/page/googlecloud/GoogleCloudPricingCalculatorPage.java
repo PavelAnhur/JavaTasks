@@ -1,4 +1,4 @@
-package page;
+package page.googlecloud;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -1,26 +1,24 @@
 package step;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import page.GoogleCloudPage;
-import page.GoogleCloudPricingCalculatorPage;
-import page.GoogleCloudResultPage;
-import page.EstimateComputeEnginePage;
+import page.googlecloud.EstimateComputeEnginePage;
+import page.googlecloud.GoogleCloudPage;
+import page.googlecloud.GoogleCloudPricingCalculatorPage;
+import page.googlecloud.GoogleCloudResultPage;
 
-public class HurtMePlentySteps {
+import static waitmanager.WaitManager.waitForElementVisibility;
+
+public class Steps {
 
 	private final WebDriver webDriver;
 	private GoogleCloudPage googleCloudPage;
 	private GoogleCloudPricingCalculatorPage googleCloudPricingCalculatorPage;
-	private final WebDriverWait wait;
 	private EstimateComputeEnginePage estimatePage;
 
 
-	public HurtMePlentySteps(WebDriver webDriver) {
+	public Steps(WebDriver webDriver) {
 		this.webDriver = webDriver;
 		webDriver.manage().window().maximize();
-		wait = new WebDriverWait(webDriver, 5);
 	}
 
 	public void openGoogleCloudPage() {
@@ -28,71 +26,80 @@ public class HurtMePlentySteps {
 		webDriver.get("https://cloud.google.com/");
 	}
 
-	public void openPricingCalculator() {
+	public Steps openPricingCalculator() {
 		googleCloudPage.searchField.sendKeys("Google Cloud Platform Pricing Calculator");
 		googleCloudPage.searchField.submit();
 		GoogleCloudResultPage googleCloudResultPage = new GoogleCloudResultPage(webDriver);
-		wait.until(ExpectedConditions
-				.visibilityOf(googleCloudResultPage.searchResult));
+		waitForElementVisibility(googleCloudResultPage.searchResult);
 		googleCloudResultPage.searchResult.click();
+		return this;
 	}
 
-	public void switchToCalculatorFrame() {
+	public Steps switchToCalculatorFrame() {
 		googleCloudPricingCalculatorPage = new GoogleCloudPricingCalculatorPage(webDriver);
 		webDriver.switchTo().frame(googleCloudPricingCalculatorPage.calculatorIFrame)
 				.switchTo().frame(googleCloudPricingCalculatorPage.myFrame);
+		return this;
 	}
 
-	public void inputNumberOfInstances(String number) {
+	public Steps inputNumberOfInstances(String number) {
 		googleCloudPricingCalculatorPage.inputNumberOfInstances.click();
 		googleCloudPricingCalculatorPage.inputNumberOfInstances.sendKeys(number);
+		return this;
 	}
 
-	public void selectSeries() {
+	public Steps selectSeries() {
 		googleCloudPricingCalculatorPage.seriesSelectField.click();
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.seriesSelectedOptions));
+		waitForElementVisibility(googleCloudPricingCalculatorPage.seriesSelectedOptions);
 		googleCloudPricingCalculatorPage.seriesSelectedOptions.click();
+		return this;
 	}
 
-	public void selectMachineType() {
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.machineTypeSelectedField));
+	public Steps selectMachineType() {
+		waitForElementVisibility(googleCloudPricingCalculatorPage.machineTypeSelectedField);
 		googleCloudPricingCalculatorPage.machineTypeSelectedField.click();
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.machineTypeSelect));
+		waitForElementVisibility(googleCloudPricingCalculatorPage.machineTypeSelect);
 		googleCloudPricingCalculatorPage.machineTypeSelect.click();
+		return this;
 	}
 
-	public void addGPU() {
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.addGPUCheckbox));
+	public Steps addGPU() {
+		waitForElementVisibility(googleCloudPricingCalculatorPage.addGPUCheckbox);
 		googleCloudPricingCalculatorPage.addGPUCheckbox.click();
 		googleCloudPricingCalculatorPage.numberOfGPUDropdown.click();
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.chooseNumberOfGPU));
+		waitForElementVisibility(googleCloudPricingCalculatorPage.chooseNumberOfGPU);
 		googleCloudPricingCalculatorPage.chooseNumberOfGPU.click();
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.gPUTypeDropdown));
+		waitForElementVisibility(googleCloudPricingCalculatorPage.gPUTypeDropdown);
 		googleCloudPricingCalculatorPage.gPUTypeDropdown.click();
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.chooseGPUType));
+		waitForElementVisibility(googleCloudPricingCalculatorPage.chooseGPUType);
 		googleCloudPricingCalculatorPage.chooseGPUType.click();
+		return this;
 	}
 
-	public void addSSD() {
+	public Steps addSSD() {
 		googleCloudPricingCalculatorPage.localSSDDropdown.click();
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.chooseLocalSSDNumber));
+		waitForElementVisibility(googleCloudPricingCalculatorPage.chooseLocalSSDNumber);
 		googleCloudPricingCalculatorPage.chooseLocalSSDNumber.click();
+		return this;
 	}
 
-	public void selectDatacenterLocation() {
+	public Steps selectDatacenterLocation() {
 		googleCloudPricingCalculatorPage.datacenterLocationDropdown.click();
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.datacenterLocationChoice));
+		waitForElementVisibility(googleCloudPricingCalculatorPage.datacenterLocationChoice);
 		googleCloudPricingCalculatorPage.datacenterLocationChoice.click();
+		return this;
 	}
 
-	public void selectCommittedUsage() {
+	public Steps selectCommittedUsage() {
 		googleCloudPricingCalculatorPage.committedUsageDropdown.click();
-		wait.until(ExpectedConditions.visibilityOf(googleCloudPricingCalculatorPage.committedUsageChoice));
+		waitForElementVisibility(googleCloudPricingCalculatorPage.committedUsageChoice);
 		googleCloudPricingCalculatorPage.committedUsageChoice.click();
+		return this;
 	}
 
-	public void pressAddToEstimate() {
+	public Steps pressAddToEstimate() {
 		googleCloudPricingCalculatorPage.addToEstimateButton.click();
+		return this;
 	}
 
 	public void openEstimateComputeEngine() {
@@ -100,7 +107,7 @@ public class HurtMePlentySteps {
 	}
 
 	public String getTextFromVMClassField() {
-		return estimatePage.vMClassFieldInCompueEngineForm.getText();
+		return estimatePage.vMClassFieldInComputeEngineForm.getText();
 	}
 
 	public String getTextFromInstanceTypeField() {
