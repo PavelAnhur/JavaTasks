@@ -139,7 +139,7 @@ public class Steps {
 
 	public void getMailOnTenMinutesMailBox() {
 		webDriver.switchTo().window(tabs.get(1));
-		tenMinutesMailPage.inboxCount = new WebDriverWait(webDriver, 10)
+		tenMinutesMailPage.inboxCount = new WebDriverWait(webDriver, 15)
 				.until(ExpectedConditions.visibilityOf(tenMinutesMailPage.inboxCount));
 		tenMinutesMailPage.inboxCount.click();
 	}

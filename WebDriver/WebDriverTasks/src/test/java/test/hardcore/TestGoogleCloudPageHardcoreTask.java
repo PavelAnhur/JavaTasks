@@ -31,13 +31,11 @@ public class TestGoogleCloudPageHardcoreTask {
 				.selectCommittedUsage()
 				.pressAddToEstimate();
 		String totalCostEstimateCost = steps.getTotalEstimateCost();
-		System.out.println(totalCostEstimateCost);
 		steps.addTenMinutesEMailTab()
 				.getMailAddressFromTenMinutesMailSite()
 				.inputMailAddressIntoEstimateForm()
 				.getMailOnTenMinutesMailBox();
 		String estimateCostFromMail = steps.getEstimateCostFromMail();
-		System.out.println(estimateCostFromMail);
 
 		Assert.assertEquals(totalCostEstimateCost, estimateCostFromMail);
 	}
