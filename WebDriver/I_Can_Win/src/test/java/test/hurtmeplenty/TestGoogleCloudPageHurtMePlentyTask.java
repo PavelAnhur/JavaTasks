@@ -8,7 +8,7 @@ import step.Steps;
 
 import static webdriver.WebDriverSetup.getDriver;
 
-public class TestGoogleCloudPage {
+public class TestGoogleCloudPageHurtMePlentyTask {
 
 	private Steps steps;
 
@@ -29,15 +29,14 @@ public class TestGoogleCloudPage {
 				.addSSD()
 				.selectDatacenterLocation()
 				.selectCommittedUsage()
-				.pressAddToEstimate()
-				.openEstimateComputeEngine();
+				.pressAddToEstimate();
 
 		Assert.assertEquals("VM class: regular", steps.getTextFromVMClassField());
 		Assert.assertEquals("Instance type: n1-standard-8", steps.getTextFromInstanceTypeField());
 		Assert.assertEquals("Region: Frankfurt", steps.getTextFromRegionField());
 		Assert.assertEquals("Total available local SSD space 2x375 GiB", steps.getTextFromAvailableSSDField());
 		Assert.assertEquals("Commitment term: 1 Year", steps.getTextFromCommitmentField());
-		Assert.assertEquals("Estimated Component Cost: USD 1,082.77 per 1 month", steps.getTotalEstimatedCost());
+		Assert.assertEquals("1,082.77", steps.getTotalEstimateCost());
 	}
 
 	@After

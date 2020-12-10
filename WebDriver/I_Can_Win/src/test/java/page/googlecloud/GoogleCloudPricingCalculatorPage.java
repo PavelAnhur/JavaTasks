@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class GoogleCloudPricingCalculatorPage {
 
-	@FindBy(id = "input_62")
+	@FindBy(css = "[ng-model$='quantity']")
 	public WebElement inputNumberOfInstances;
 
 	@FindBy(css = "iframe[src*=calculator]")
@@ -63,6 +63,33 @@ public class GoogleCloudPricingCalculatorPage {
 
 	@FindBy(xpath = "//button[@aria-label='Add to Estimate']")
 	public WebElement addToEstimateButton;
+
+	@FindBy(css = "#email_quote")
+	public WebElement eMailEstimateForm;
+
+	@FindBy(css = "input[ng-model$='email']")
+	public WebElement eMailInputField;
+
+	@FindBy(css = "md-list-item[ng-if*=initialInputs]")
+	public WebElement vMClassFieldInComputeEngineForm;
+
+	@FindBy(xpath = "//*[@id=\"compute\"]/md-list/md-list-item[3]")
+	public WebElement instanceTypeFieldInComputeEngineForm;
+
+	@FindBy(xpath = "//*[@id=\"compute\"]/md-list/md-list-item[4]")
+	public WebElement regionFieldInComputeEngineForm;
+
+	@FindBy(css = "md-list-item[ng-if*=ssd]")
+	public WebElement availableSSDFieldInComputeEngineForm;
+
+	@FindBy(xpath = "//*[@id=\"compute\"]/md-list/md-list-item[6]")
+	public WebElement commitmentFieldInComputeEngineForm;
+
+	@FindBy(css = "b[class=ng-binding]")
+	public WebElement totalCostFieldInComputeEngineForm;
+
+	@FindBy(css = "button[aria-label='Send Email']")
+	public WebElement sendEMail;
 
 	public GoogleCloudPricingCalculatorPage(WebDriver driver) {
 		PageFactory.initElements(driver, this);

@@ -1,10 +1,22 @@
 package step;
 
+import org.apache.commons.lang3.math.NumberUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import page.googlecloud.EstimateComputeEnginePage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import page.googlecloud.GoogleCloudPage;
 import page.googlecloud.GoogleCloudPricingCalculatorPage;
 import page.googlecloud.GoogleCloudResultPage;
+import page.tenminutesmail.TenMinutesMailPage;
+
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
+import java.io.IOException;
+import java.util.ArrayList;
 
 import static waitmanager.WaitManager.waitForElementVisibility;
 
@@ -13,12 +25,14 @@ public class Steps {
 	private final WebDriver webDriver;
 	private GoogleCloudPage googleCloudPage;
 	private GoogleCloudPricingCalculatorPage googleCloudPricingCalculatorPage;
-	private EstimateComputeEnginePage estimatePage;
-
+	private TenMinutesMailPage tenMinutesMailPage;
+	private ArrayList<String> tabs;
+	private String eMailAddress;
 
 	public Steps(WebDriver webDriver) {
 		this.webDriver = webDriver;
 		webDriver.manage().window().maximize();
+		eMailAddress = "";
 	}
 
 	public void openGoogleCloudPage() {
@@ -97,37 +111,101 @@ public class Steps {
 		return this;
 	}
 
-	public Steps pressAddToEstimate() {
+	public void pressAddToEstimate() {
 		googleCloudPricingCalculatorPage.addToEstimateButton.click();
+	}
+
+	public Steps addTenMinutesEMailTab() {
+		((JavascriptExecutor) webDriver).executeScript("window.open('https://10minutemail.com','_blank')");
+		tabs = new ArrayList<>(webDriver.getWindowHandles());
 		return this;
 	}
 
-	public void openEstimateComputeEngine() {
-		estimatePage = new EstimateComputeEnginePage(webDriver);
+	public Steps getMailAddressFromTenMinutesMailSite() {
+		webDriver.switchTo().window(tabs.get(1));
+		eMailAddress = getTenMinutesEMailAddressAsString();
+		return this;
+	}
+
+	public Steps inputMailAddressIntoEstimateForm() {
+		webDriver.switchTo().window(tabs.get(0));
+		webDriver.switchTo().frame(googleCloudPricingCalculatorPage.calculatorIFrame)
+				.switchTo().frame(googleCloudPricingCalculatorPage.myFrame);
+		googleCloudPricingCalculatorPage.eMailEstimateForm.click();
+		googleCloudPricingCalculatorPage.eMailInputField.sendKeys(eMailAddress);
+		googleCloudPricingCalculatorPage.sendEMail.click();
+		return this;
+	}
+
+	public void getMailOnTenMinutesMailBox() {
+		webDriver.switchTo().window(tabs.get(1));
+		tenMinutesMailPage.inboxCount = new WebDriverWait(webDriver, 10)
+				.until(ExpectedConditions.visibilityOf(tenMinutesMailPage.inboxCount));
+		tenMinutesMailPage.inboxCount.click();
+	}
+
+	private String getTenMinutesEMailAddressAsString() {
+		tenMinutesMailPage = new TenMinutesMailPage(webDriver);
+		tenMinutesMailPage.eMailAddress.click();
+		String resultMailAddress = "";
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		Transferable contents = clipboard.getContents(null);
+		boolean hasStringText = (contents != null) && contents.isDataFlavorSupported(DataFlavor.stringFlavor);
+		if (hasStringText) {
+			try {
+				resultMailAddress = (String) contents.getTransferData(DataFlavor.stringFlavor);
+			} catch (UnsupportedFlavorException | IOException ex) {
+				System.out.println(ex);
+				ex.printStackTrace();
+			}
+		}
+		return resultMailAddress;
+	}
+
+	public String getTextFromMail() {
+		return tenMinutesMailPage.estimateCosInMail.getText();
 	}
 
 	public String getTextFromVMClassField() {
-		return estimatePage.vMClassFieldInComputeEngineForm.getText();
+		return googleCloudPricingCalculatorPage.vMClassFieldInComputeEngineForm.getText();
 	}
 
 	public String getTextFromInstanceTypeField() {
-		return estimatePage.instanceTypeFieldInComputeEngineForm.getText();
+		return googleCloudPricingCalculatorPage.instanceTypeFieldInComputeEngineForm.getText();
 	}
 
 	public String getTextFromRegionField() {
-		return estimatePage.regionFieldInComputeEngineForm.getText();
+		return googleCloudPricingCalculatorPage.regionFieldInComputeEngineForm.getText();
 	}
 
 	public String getTextFromAvailableSSDField() {
-		return estimatePage.availableSSDFieldInComputeEngineForm.getText();
+		return googleCloudPricingCalculatorPage.availableSSDFieldInComputeEngineForm.getText();
 	}
 
 	public String getTextFromCommitmentField() {
-		return estimatePage.commitmentFieldInComputeEngineForm.getText();
+		return googleCloudPricingCalculatorPage.commitmentFieldInComputeEngineForm.getText();
 	}
 
-	public String getTotalEstimatedCost() {
-		return estimatePage.totalCostFieldInComputeEngineForm.getText();
+	public String getTotalEstimatedCostString() {
+		return googleCloudPricingCalculatorPage.totalCostFieldInComputeEngineForm.getText();
+	}
+
+	private String getCostFromString(String string) {
+		String[] wordsFromString = string.split(" ");
+		for (String word : wordsFromString) {
+			if (NumberUtils.isParsable(String.valueOf(word.charAt(0)))) {
+				return word;
+			}
+		}
+		return null;
+	}
+
+	public String getTotalEstimateCost() {
+		return getCostFromString(getTotalEstimatedCostString());
+	}
+
+	public String getEstimateCostFromMail() {
+		return getCostFromString(getTextFromMail());
 	}
 
 	public void quitDriver() {
