@@ -12,6 +12,13 @@ public class WebDriverSetup {
 	private WebDriverSetup() {
 	}
 
+	public static WebDriver getDriver() {
+		if (driver == null) {
+			setupWebDriver();
+		}
+		return driver;
+	}
+
 	private static void setupWebDriver() {
 		switch (System.getenv("WebDriver")) {
 			case "Firefox":
@@ -24,12 +31,5 @@ public class WebDriverSetup {
 				driver = new ChromeDriver();
 				break;
 		}
-	}
-
-	public static WebDriver getDriver() {
-		if (driver == null) {
-			setupWebDriver();
-		}
-		return driver;
 	}
 }

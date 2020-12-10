@@ -144,24 +144,6 @@ public class Steps {
 		tenMinutesMailPage.inboxCount.click();
 	}
 
-	private String getTenMinutesEMailAddressAsString() {
-		tenMinutesMailPage = new TenMinutesMailPage(webDriver);
-		tenMinutesMailPage.eMailAddress.click();
-		String resultMailAddress = "";
-		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-		Transferable contents = clipboard.getContents(null);
-		boolean hasStringText = (contents != null) && contents.isDataFlavorSupported(DataFlavor.stringFlavor);
-		if (hasStringText) {
-			try {
-				resultMailAddress = (String) contents.getTransferData(DataFlavor.stringFlavor);
-			} catch (UnsupportedFlavorException | IOException ex) {
-				System.out.println(ex);
-				ex.printStackTrace();
-			}
-		}
-		return resultMailAddress;
-	}
-
 	public String getTextFromMail() {
 		return tenMinutesMailPage.estimateCosInMail.getText();
 	}
@@ -190,16 +172,6 @@ public class Steps {
 		return googleCloudPricingCalculatorPage.totalCostFieldInComputeEngineForm.getText();
 	}
 
-	private String getCostFromString(String string) {
-		String[] wordsFromString = string.split(" ");
-		for (String word : wordsFromString) {
-			if (NumberUtils.isParsable(String.valueOf(word.charAt(0)))) {
-				return word;
-			}
-		}
-		return null;
-	}
-
 	public String getTotalEstimateCost() {
 		return getCostFromString(getTotalEstimatedCostString());
 	}
@@ -212,5 +184,33 @@ public class Steps {
 		if (webDriver != null) {
 			webDriver.quit();
 		}
+	}
+
+	private String getTenMinutesEMailAddressAsString() {
+		tenMinutesMailPage = new TenMinutesMailPage(webDriver);
+		tenMinutesMailPage.eMailAddress.click();
+		String resultMailAddress = "";
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		Transferable contents = clipboard.getContents(null);
+		boolean hasStringText = (contents != null) && contents.isDataFlavorSupported(DataFlavor.stringFlavor);
+		if (hasStringText) {
+			try {
+				resultMailAddress = (String) contents.getTransferData(DataFlavor.stringFlavor);
+			} catch (UnsupportedFlavorException | IOException ex) {
+				System.out.println(ex);
+				ex.printStackTrace();
+			}
+		}
+		return resultMailAddress;
+	}
+
+	private String getCostFromString(String string) {
+		String[] wordsFromString = string.split(" ");
+		for (String word : wordsFromString) {
+			if (NumberUtils.isParsable(String.valueOf(word.charAt(0)))) {
+				return word;
+			}
+		}
+		return null;
 	}
 }
